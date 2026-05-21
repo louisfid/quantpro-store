@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuantPro — Portfolio Management</title>
+<meta name="description" content="Full lifecycle portfolio management. Track positions, analyse performance, and manage risk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="bracket">[</span><span class="logo-text">QUANTPRO</span><span class="bracket">]</span></a>
+  <div class="nav-links">
+    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-sm lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="btn-sm lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+    <button class="btn-sm" onclick="toggleTheme()"><span class="en">Theme</span><span class="de">Design</span></button>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">QuantPro</a> <span>›</span> <span><span class="en">Portfolio Management</span><span class="de">Portfolio-Verwaltung</span></span></div>
+
+<div class="hero">
+  <div class="eyebrow">Portfolio</div>
+  <h1><span class="en">Manage your portfolio<br>like a <em>professional</em></span><span class="de">Verwalte dein Portfolio<br>wie ein <em>Profi</em></span></h1>
+  <p><span class="en">From importing your first position to running institutional-grade risk reports — QuantPro's portfolio module covers the full investment lifecycle.</span><span class="de">Vom Import deiner ersten Position bis zum institutionellen Risikobericht — das Portfolio-Modul von QuantPro deckt den gesamten Investment-Lebenszyklus ab.</span></p>
+</div>
+
+<!-- MOCKUP -->
+<div class="mockup-wrap">
+  <div class="mockup">
+    <div class="mockup-bar">
+      <div class="mockup-dot r"></div><div class="mockup-dot y"></div><div class="mockup-dot g"></div>
+      <div class="mockup-url">www.quantpro.de/portfolio — <span class="en">Positions</span><span class="de">Positionen</span></div>
+    </div>
+    <div class="mockup-body">
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Total Value</span><span class="de">Gesamtwert</span></div><div class="mock-stat-value">$124,842</div><div class="mock-stat-change up">▲ +17.3% <span class="en">all-time</span><span class="de">gesamt</span></div></div>
+      <div class="mock-stat"><div class="mock-stat-label">VaR 95%</div><div class="mock-stat-value">$3,210</div><div class="mock-stat-change col-d"><span class="en">daily risk</span><span class="de">Tagesrisiko</span></div></div>
+      <div class="mock-stat"><div class="mock-stat-label">Sharpe</div><div class="mock-stat-value">1.42</div><div class="mock-stat-change up">▲ <span class="en">above benchmark</span><span class="de">über Benchmark</span></div></div>
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Positions</span><span class="de">Positionen</span></div><div class="mock-stat-value">19</div><div class="mock-stat-change col-d"><span class="en">Live prices</span><span class="de">Live-Preise</span></div></div>
+      <div class="mock-table">
+        <div class="mock-row hdr"><span>Symbol</span><span>Qty</span><span>Price</span><span>P&L</span><span>Weight</span></div>
+        <div class="mock-row"><span>AAPL</span><span>15</span><span>$189.42</span><span class="col-g">+$2,841</span><span class="col-d">8.4%</span></div>
+        <div class="mock-row"><span>MSFT</span><span>8</span><span>$412.80</span><span class="col-g">+$1,920</span><span class="col-d">11.2%</span></div>
+        <div class="mock-row"><span>VUAA.PA</span><span>120</span><span>€94.12</span><span class="col-g">+$4,100</span><span class="col-d">14.8%</span></div>
+        <div class="mock-row"><span>GLDA.L</span><span>200</span><span>£134.50</span><span class="col-r">−$220</span><span class="col-d">6.1%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section" style="padding-top:0">
+  <div class="section-eyebrow"><span class="en">All Features</span><span class="de">Alle Funktionen</span></div>
+  <h2><span class="en">Everything in the Portfolio module</span><span class="de">Alles im Portfolio-Modul</span></h2>
+  <p class="section-sub"><span class="en">Ten powerful tools built around your positions — from import to institutional risk analysis.</span><span class="de">Zehn leistungsstarke Tools rund um deine Positionen — vom Import bis zur institutionellen Risikoanalyse.</span></p>
+
+  <div class="detail-list">
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/depot</span>
+      <h3>Depot</h3>
+      <div class="db-sub"><span class="en">Position management · Live prices · P&L tracking</span><span class="de">Positionsverwaltung · Live-Preise · P&L-Tracking</span></div>
+      <p><span class="en">Your portfolio's home base. All positions in one view with live prices, quantities, cost basis, current market value, and unrealised P&L. Multi-currency support means USD, EUR, GBP and more are all handled automatically with live FX conversion.</span><span class="de">Die Zentrale deines Portfolios. Alle Positionen in einer Ansicht mit Live-Preisen, Mengen, Einstandspreisen, aktuellem Marktwert und unrealisiertem P&L. Multi-Währungs-Support bedeutet, dass USD, EUR, GBP und mehr automatisch mit Live-FX-Konvertierung verarbeitet werden.</span></p>
+      <ul>
+        <li><span class="en">Live price updates from global markets</span><span class="de">Live-Preis-Updates von globalen Märkten</span></li>
+        <li><span class="en">P&L in absolute and percentage terms</span><span class="de">P&L absolut und prozentual</span></li>
+        <li><span class="en">Multi-currency: USD, EUR, GBP, CHF and more</span><span class="de">Mehrwährung: USD, EUR, GBP, CHF u.v.m.</span></li>
+        <li><span class="en">Day change tracking per position</span><span class="de">Tagesveränderung pro Position</span></li>
+        <li><span class="en">Portfolio weight for each position</span><span class="de">Portfolio-Gewicht jeder Position</span></li>
+        <li><span class="en">Add, edit or delete positions at any time</span><span class="de">Positionen jederzeit hinzufügen, bearbeiten oder löschen</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/import</span>
+      <h3>Broker-Import</h3>
+      <div class="db-sub">CSV · Trade Republic · DEGIRO · IBKR</div>
+      <p><span class="en">Skip manual entry entirely. Import your positions directly via CSV export from your broker. QuantPro automatically maps columns, converts currencies, and handles duplicates. Supported out of the box: Trade Republic, DEGIRO, and Interactive Brokers (IBKR).</span><span class="de">Manuelle Eingabe komplett überspringen. Positionen direkt per CSV-Export vom Broker importieren. QuantPro mappt Spalten automatisch, konvertiert Währungen und behandelt Duplikate. Unterstützt werden: Trade Republic, DEGIRO und Interactive Brokers (IBKR).</span></p>
+      <ul>
+        <li><span class="en">Trade Republic CSV support</span><span class="de">Trade Republic CSV-Support</span></li>
+        <li><span class="en">DEGIRO CSV support</span><span class="de">DEGIRO CSV-Support</span></li>
+        <li><span class="en">Interactive Brokers (IBKR) CSV support</span><span class="de">Interactive Brokers (IBKR) CSV-Support</span></li>
+        <li><span class="en">Automatic column mapping</span><span class="de">Automatisches Spalten-Mapping</span></li>
+        <li><span class="en">Duplicate detection and merge</span><span class="de">Duplikat-Erkennung und Zusammenführung</span></li>
+        <li><span class="en">Currency auto-conversion on import</span><span class="de">Automatische Währungskonvertierung beim Import</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/exposure</span>
+      <h3><span class="en">Effective Exposure</span><span class="de">Effektive Exposition</span></h3>
+      <div class="db-sub">ETF Lookthrough · Overlap · <span class="en">True holdings</span><span class="de">Echte Positionen</span></div>
+      <p><span class="en">ETFs hide your true exposure. If you hold VUAA, MSCI World, and a tech ETF, your actual Apple holding might be 15% — but it looks like 0% in a simple view. Effective Exposure looks through ETF wrappers to show your real underlying positions and detect overlap between funds.</span><span class="de">ETFs verstecken deine wahre Exposition. Wenn du VUAA, MSCI World und einen Tech-ETF hältst, könnte deine tatsächliche Apple-Position 15% betragen — aber in einer einfachen Ansicht sieht es nach 0% aus. Effektive Exposition schaut durch ETF-Hüllen hindurch und zeigt deine echten zugrunde liegenden Positionen.</span></p>
+      <ul>
+        <li><span class="en">See actual stock holdings inside your ETFs</span><span class="de">Echte Aktienbestände innerhalb deiner ETFs sehen</span></li>
+        <li><span class="en">Overlap detection across multiple ETFs</span><span class="de">Überlappungserkennung über mehrere ETFs</span></li>
+        <li><span class="en">Geographic exposure breakdown</span><span class="de">Geografische Expositions-Aufschlüsselung</span></li>
+        <li><span class="en">Sector concentration analysis</span><span class="de">Sektor-Konzentrations-Analyse</span></li>
+        <li><span class="en">Top 20 effective holdings ranking</span><span class="de">Top-20 effektive Positionen</span></li>
+        <li><span class="en">Visualised as treemap and bar charts</span><span class="de">Als Treemap und Balkendiagramme visualisiert</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/analyze</span>
+      <h3><span class="en">Analysis</span><span class="de">Analyse</span></h3>
+      <div class="db-sub"><span class="en">24 factors · AI commentary · Quality score</span><span class="de">24 Faktoren · KI-Kommentar · Qualitäts-Score</span></div>
+      <p><span class="en">Run a 24-factor analysis across your entire portfolio. Each factor — P/E ratio, EV/EBITDA, ROE, momentum, earnings growth, debt levels, and more — is scored and explained. An AI-powered commentary module then synthesises the signals into plain-language insights about your portfolio's strengths and risks.</span><span class="de">Führe eine 24-Faktoren-Analyse über das gesamte Portfolio durch. Jeder Faktor — KGV, EV/EBITDA, ROE, Momentum, Gewinnwachstum, Schuldenstand u.v.m. — wird bewertet und erklärt. Ein KI-gestütztes Kommentarmodul fasst die Signale in klare Einblicke zu Stärken und Risiken zusammen.</span></p>
+      <ul>
+        <li><span class="en">Value factors: P/E, P/B, EV/EBITDA, P/FCF</span><span class="de">Value-Faktoren: KGV, KBV, EV/EBITDA, P/FCF</span></li>
+        <li><span class="en">Quality factors: ROE, ROIC, margins, debt</span><span class="de">Qualitätsfaktoren: ROE, ROIC, Margen, Schulden</span></li>
+        <li><span class="en">Growth factors: revenue, EPS, FCF growth</span><span class="de">Wachstumsfaktoren: Umsatz-, EPS-, FCF-Wachstum</span></li>
+        <li><span class="en">Momentum: 3M, 6M, 12M price performance</span><span class="de">Momentum: 3M, 6M, 12M Kursentwicklung</span></li>
+        <li><span class="en">AI-generated portfolio narrative</span><span class="de">KI-generiertes Portfolio-Narrativ</span></li>
+        <li><span class="en">Factor heatmap across all positions</span><span class="de">Faktor-Heatmap über alle Positionen</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/quick</span>
+      <h3><span class="en">Quick Analysis</span><span class="de">Schnellanalyse</span></h3>
+      <div class="db-sub"><span class="en">Any ticker · Instant scores · No portfolio needed</span><span class="de">Beliebiger Ticker · Sofortige Scores · Kein Portfolio nötig</span></div>
+      <p><span class="en">Enter any ticker symbol for an instant factor analysis. Great for evaluating stocks before adding them to your portfolio — see all 24 factor scores, valuation metrics, and AI commentary in seconds. Works for stocks on any major exchange.</span><span class="de">Gib ein beliebiges Ticker-Symbol für eine sofortige Faktoranalyse ein. Ideal zur Bewertung von Aktien, bevor du sie dem Portfolio hinzufügst — alle 24 Faktor-Scores, Bewertungsmetriken und KI-Kommentar in Sekunden.</span></p>
+      <ul>
+        <li><span class="en">Instant factor scores for any ticker</span><span class="de">Sofortige Faktor-Scores für beliebige Ticker</span></li>
+        <li><span class="en">Full valuation metrics (P/E, P/B, EV/EBITDA…)</span><span class="de">Vollständige Bewertungsmetriken</span></li>
+        <li><span class="en">AI commentary on strengths and risks</span><span class="de">KI-Kommentar zu Stärken und Risiken</span></li>
+        <li><span class="en">Sector comparison</span><span class="de">Sektor-Vergleich</span></li>
+        <li><span class="en">Supports US, EU, UK exchanges</span><span class="de">Unterstützt US-, EU-, UK-Börsen</span></li>
+        <li><span class="en">No portfolio position required</span><span class="de">Keine Portfolio-Position erforderlich</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/forecast</span>
+      <h3><span class="en">Forecast</span><span class="de">Prognose</span></h3>
+      <div class="db-sub">Monte Carlo · P10/P50/P90 · <span class="en">Scenarios</span><span class="de">Szenarien</span></div>
+      <p><span class="en">Project your portfolio's future value using Monte Carlo simulation across thousands of randomised scenarios. See the 10th percentile (bear case), median, and 90th percentile (bull case) outcomes over your chosen time horizon. Helps you understand the realistic range of outcomes rather than a single optimistic forecast.</span><span class="de">Projiziere den zukünftigen Wert deines Portfolios mit Monte-Carlo-Simulation über Tausende von Szenarien. Sieh das 10. Perzentil (Bärenszenario), den Median und das 90. Perzentil (Bullenszenario) über deinen gewählten Zeithorizont.</span></p>
+      <ul>
+        <li><span class="en">Monte Carlo with 10,000+ simulation paths</span><span class="de">Monte Carlo mit 10.000+ Simulationspfaden</span></li>
+        <li><span class="en">P10 / P50 / P90 outcome bands</span><span class="de">P10 / P50 / P90 Ergebnisbänder</span></li>
+        <li><span class="en">Adjustable time horizon (1–10 years)</span><span class="de">Einstellbarer Zeithorizont (1–10 Jahre)</span></li>
+        <li><span class="en">Historical volatility-based model</span><span class="de">Historisch-volatilitätsbasiertes Modell</span></li>
+        <li><span class="en">Target value probability calculation</span><span class="de">Zielwert-Wahrscheinlichkeitsberechnung</span></li>
+        <li><span class="en">Interactive scenario chart</span><span class="de">Interaktives Szenario-Diagramm</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/attribution</span>
+      <h3>Attribution</h3>
+      <div class="db-sub"><span class="en">Return decomposition · Alpha · Factor contributions</span><span class="de">Rendite-Zerlegung · Alpha · Faktorbeiträge</span></div>
+      <p><span class="en">Understand exactly what drove your portfolio returns. Attribution analysis decomposes performance into market beta (broad market exposure), factor contributions (value, momentum, quality), and true alpha (skill-driven returns). Know whether your gains came from smart stock picking or just riding the bull market.</span><span class="de">Verstehe genau, was deine Portfolio-Renditen angetrieben hat. Die Attributions-Analyse zerlegt die Performance in Markt-Beta, Faktorbeiträge und echtes Alpha.</span></p>
+      <ul>
+        <li><span class="en">Return decomposition by factor and position</span><span class="de">Rendite-Zerlegung nach Faktor und Position</span></li>
+        <li><span class="en">Separate alpha from market beta</span><span class="de">Alpha von Markt-Beta trennen</span></li>
+        <li><span class="en">Sector-level contribution analysis</span><span class="de">Beitragsanalyse auf Sektor-Ebene</span></li>
+        <li><span class="en">Rolling attribution over time</span><span class="de">Rollende Attribution über die Zeit</span></li>
+        <li><span class="en">Best and worst performing positions</span><span class="de">Beste und schlechteste Positionen</span></li>
+        <li><span class="en">Benchmark comparison (S&P 500, DAX, etc.)</span><span class="de">Benchmark-Vergleich (S&P 500, DAX, etc.)</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/stress</span>
+      <h3>Stress-Test</h3>
+      <div class="db-sub"><span class="en">Historical scenarios · Shock analysis · Custom shocks</span><span class="de">Historische Szenarien · Schockanalyse · Eigene Schocks</span></div>
+      <p><span class="en">How would your portfolio have performed during the 2008 financial crisis? The COVID crash? A 200bps rate hike? Stress testing runs your current holdings through historical and hypothetical shock scenarios to estimate potential losses and identify your most vulnerable positions.</span><span class="de">Wie hätte sich dein Portfolio während der Finanzkrise 2008 entwickelt? Beim COVID-Crash? Bei einem 200-Basispunkte-Zinsanstieg? Stress-Tests führen deine aktuellen Positionen durch historische und hypothetische Schock-Szenarien.</span></p>
+      <ul>
+        <li><span class="en">2008 Financial Crisis scenario</span><span class="de">Finanzkrise 2008 Szenario</span></li>
+        <li><span class="en">COVID-19 crash scenario (March 2020)</span><span class="de">COVID-19 Crash-Szenario (März 2020)</span></li>
+        <li><span class="en">Rate shock: +100bps, +200bps, +300bps</span><span class="de">Zinsschock: +100bp, +200bp, +300bp</span></li>
+        <li><span class="en">Custom scenario builder</span><span class="de">Eigener Szenario-Builder</span></li>
+        <li><span class="en">Per-position impact breakdown</span><span class="de">Aufschlüsselung der Auswirkungen pro Position</span></li>
+        <li><span class="en">Portfolio loss estimation in % and absolute</span><span class="de">Portfolio-Verlustschätzung in % und absolut</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/risk</span>
+      <h3><span class="en">Risk Report</span><span class="de">Risikobericht</span></h3>
+      <div class="db-sub">VaR · CVaR · Drawdown · Volatility · Sharpe</div>
+      <p><span class="en">A comprehensive risk report covering every major risk metric used by institutional portfolio managers. Generated in seconds for your current portfolio. Understand your downside risk, portfolio volatility, and risk-adjusted return in one consolidated view.</span><span class="de">Ein umfassender Risikobericht, der alle wichtigen Risikometriken institutioneller Portfoliomanager abdeckt. In Sekunden für dein aktuelles Portfolio erstellt.</span></p>
+      <ul>
+        <li><span class="en">Value at Risk (VaR) at 95% and 99% confidence</span><span class="de">Value at Risk (VaR) bei 95% und 99% Konfidenz</span></li>
+        <li><span class="en">Conditional VaR / Expected Shortfall (CVaR)</span><span class="de">Conditional VaR / Expected Shortfall (CVaR)</span></li>
+        <li><span class="en">Maximum drawdown (historical)</span><span class="de">Maximaler Drawdown (historisch)</span></li>
+        <li><span class="en">Annualised portfolio volatility</span><span class="de">Annualisierte Portfolio-Volatilität</span></li>
+        <li><span class="en">Sharpe ratio and Sortino ratio</span><span class="de">Sharpe-Ratio und Sortino-Ratio</span></li>
+        <li><span class="en">Correlation matrix across positions</span><span class="de">Korrelationsmatrix über alle Positionen</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/dcf</span>
+      <h3><span class="en">DCF Calculator</span><span class="de">DCF-Rechner</span></h3>
+      <div class="db-sub"><span class="en">Intrinsic value · Margin of safety · Sensitivity</span><span class="de">Innerer Wert · Sicherheitsmarge · Sensitivität</span></div>
+      <p><span class="en">Build a Discounted Cash Flow model for any stock. Estimate intrinsic value based on future free cash flows, discount rate (WACC), and terminal growth assumptions. Compare the result to the current market price to calculate your margin of safety — the core principle of value investing.</span><span class="de">Erstelle ein Discounted-Cash-Flow-Modell für jede Aktie. Schätze den inneren Wert basierend auf zukünftigen freien Cashflows, Diskontierungssatz (WACC) und Terminal-Wachstumsannahmen.</span></p>
+      <ul>
+        <li><span class="en">Custom DCF model with your inputs</span><span class="de">Eigenes DCF-Modell mit deinen Eingaben</span></li>
+        <li><span class="en">WACC and terminal value calculation</span><span class="de">WACC und Terminal-Value-Berechnung</span></li>
+        <li><span class="en">Margin of safety vs current price</span><span class="de">Sicherheitsmarge vs. aktuellem Preis</span></li>
+        <li><span class="en">Sensitivity table (growth rate vs discount rate)</span><span class="de">Sensitivitätstabelle (Wachstum vs. Diskont)</span></li>
+        <li><span class="en">Bull / base / bear case scenarios</span><span class="de">Bull / Base / Bear Case Szenarien</span></li>
+        <li><span class="en">Pre-filled with live financial data</span><span class="de">Vorausgefüllt mit Live-Finanzdaten</span></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="sep"></div>
+<div class="section">
+  <div class="cta-banner">
+    <h2><span class="en">Start managing your portfolio professionally</span><span class="de">Starte jetzt mit professionellem Portfolio-Management</span></h2>
+    <p><span class="en">Free to start. Import your positions and see your analytics in minutes.</span><span class="de">Kostenlos starten. Positionen importieren und Analytics in Minuten sehen.</span></p>
+    <a href="https://www.quantpro.de/register" class="btn-cta" target="_blank"><span class="en">Get Started Free</span><span class="de">Kostenlos starten</span></a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo"><span class="bracket">[</span>QUANTPRO<span class="bracket">]</span></div>
+  <div class="footer-links">
+    <a href="index.html"><span class="en">Overview</span><span class="de">Übersicht</span></a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+    <a href="https://quantpro.store" target="_blank"><span class="en">Pricing</span><span class="de">Preise</span></a>
+  </div>
+  <div class="footer-copy">© 2026 QuantPro</div>
+</footer>
+
+<script>
+function setLang(l){document.body.classList.toggle('lang-de',l==='de');localStorage.setItem('qp-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}
+function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('qp-theme',t);}
+(function(){const l=localStorage.getItem('qp-lang')||'en';if(l==='de'){document.body.classList.add('lang-de');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}const t=localStorage.getItem('qp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+</body>
+</html>
