@@ -36,6 +36,7 @@
     <a href="research.html">Research</a>
     <a href="quant-lab.html">Quant Lab</a>
     <a href="terminal.html">Terminal</a>
+    <a href="https://quantpro.store" target="_blank" style="color:var(--green);font-weight:600"><span class="en">Pricing</span><span class="de">Preise</span></a>
   </div>
   <div class="nav-actions">
     <button class="btn-sm lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
@@ -157,6 +158,8 @@
 </footer>
 
 <script>
+// Redirect quantpro.store visitors to the pricing page
+(function(){var h=window.location.hostname;if(h==='quantpro.store'||h==='www.quantpro.store'){window.location.replace('/pricing.html');return;}})();
 function setLang(l){document.body.classList.toggle('lang-de',l==='de');localStorage.setItem('qp-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}
 function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('qp-theme',t);}
 (function(){const l=localStorage.getItem('qp-lang')||'en';if(l==='de'){document.body.classList.add('lang-de');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}const t=localStorage.getItem('qp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
