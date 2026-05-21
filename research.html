@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuantPro — Research</title>
+<meta name="description" content="Screen hundreds of stocks, manage your watchlist, track earnings and set intelligent price alerts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="bracket">[</span><span class="logo-text">QUANTPRO</span><span class="bracket">]</span></a>
+  <div class="nav-links">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="research.html" class="active">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-sm lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="btn-sm lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+    <button class="btn-sm" onclick="toggleTheme()"><span class="en">Theme</span><span class="de">Design</span></button>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">QuantPro</a> <span>›</span> <span>Research</span></div>
+
+<div class="hero">
+  <div class="eyebrow">Research</div>
+  <h1><span class="en">Find your next<br><em>great investment</em></span><span class="de">Finde deine nächste<br><em>großartige Investition</em></span></h1>
+  <p><span class="en">Screen hundreds of stocks with 100+ filters, track your watchlist, stay on top of earnings events, and never miss a price target with intelligent alerts.</span><span class="de">Screene hunderte Aktien mit 100+ Filtern, verfolge deine Watchlist, behalte Earnings-Termine im Blick und verpasse keine Kursziele mit intelligenten Alarmen.</span></p>
+</div>
+
+<div class="mockup-wrap">
+  <div class="mockup">
+    <div class="mockup-bar">
+      <div class="mockup-dot r"></div><div class="mockup-dot y"></div><div class="mockup-dot g"></div>
+      <div class="mockup-url">www.quantpro.de/screener — <span class="en">Stock Screener</span><span class="de">Aktien-Screener</span></div>
+    </div>
+    <div class="mockup-body">
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Stocks Matched</span><span class="de">Treffer</span></div><div class="mock-stat-value">47</div><div class="mock-stat-change col-d"><span class="en">of 100+ total</span><span class="de">von 100+ gesamt</span></div></div>
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Active Filters</span><span class="de">Aktive Filter</span></div><div class="mock-stat-value">5</div><div class="mock-stat-change col-d">P/E · ROE · Div · Mom · Beta</div></div>
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Watchlist</span><span class="de">Watchlist</span></div><div class="mock-stat-value">12</div><div class="mock-stat-change up">▲ 3 <span class="en">up today</span><span class="de">heute oben</span></div></div>
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Alerts</span><span class="de">Alarme</span></div><div class="mock-stat-value">8</div><div class="mock-stat-change col-d"><span class="en">2 triggered</span><span class="de">2 ausgelöst</span></div></div>
+      <div class="mock-table">
+        <div class="mock-row hdr"><span>Symbol</span><span>P/E</span><span>ROE</span><span>Div Yield</span><span>Momentum</span></div>
+        <div class="mock-row"><span>NOVO B</span><span class="col-d">22.4x</span><span class="col-g">85%</span><span class="col-d">1.2%</span><span class="col-g">+34%</span></div>
+        <div class="mock-row"><span>SAP</span><span class="col-d">31.2x</span><span class="col-g">22%</span><span class="col-d">1.0%</span><span class="col-g">+18%</span></div>
+        <div class="mock-row"><span>ASML</span><span class="col-d">28.8x</span><span class="col-g">31%</span><span class="col-d">0.8%</span><span class="col-r">−4%</span></div>
+        <div class="mock-row"><span>LVMH</span><span class="col-d">19.1x</span><span class="col-g">18%</span><span class="col-d">2.1%</span><span class="col-r">−8%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="section-eyebrow"><span class="en">All Features</span><span class="de">Alle Funktionen</span></div>
+  <h2><span class="en">Everything in Research</span><span class="de">Alles in Research</span></h2>
+  <p class="section-sub"><span class="en">Six tools to discover, track, and monitor investment opportunities.</span><span class="de">Sechs Tools zum Entdecken, Verfolgen und Überwachen von Investment-Möglichkeiten.</span></p>
+
+  <div class="detail-list">
+
+    <div class="detail-block">
+      <span class="db-tag">research/screener</span>
+      <h3><span class="en">Stock Screener</span><span class="de">Aktien-Screener</span></h3>
+      <div class="db-sub"><span class="en">100+ stocks · Multi-factor filtering · Sortable results</span><span class="de">100+ Titel · Multi-Faktor-Filter · Sortierbare Ergebnisse</span></div>
+      <p><span class="en">Filter a universe of 100+ stocks using any combination of financial metrics. Stack multiple filters simultaneously — find stocks with P/E under 20, ROE above 15%, positive momentum, and a dividend yield above 2% in seconds. Results are sortable by any column and can be added directly to your portfolio or watchlist.</span><span class="de">Filtere ein Universum von 100+ Aktien mit beliebigen Kombinationen von Finanzkennzahlen. Mehrere Filter gleichzeitig stapeln — Aktien mit KGV unter 20, ROE über 15%, positivem Momentum und Dividendenrendite über 2% in Sekunden finden.</span></p>
+      <ul>
+        <li><span class="en">Filter by P/E, P/B, EV/EBITDA, P/FCF</span><span class="de">Filtern nach KGV, KBV, EV/EBITDA, P/FCF</span></li>
+        <li><span class="en">Filter by ROE, ROIC, operating margins</span><span class="de">Filtern nach ROE, ROIC, operativen Margen</span></li>
+        <li><span class="en">Filter by 3M, 6M, 12M price momentum</span><span class="de">Filtern nach 3M, 6M, 12M Momentum</span></li>
+        <li><span class="en">Filter by dividend yield and payout ratio</span><span class="de">Filtern nach Dividendenrendite und Ausschüttungsquote</span></li>
+        <li><span class="en">Filter by market cap, beta, volume</span><span class="de">Filtern nach Marktkapitalisierung, Beta, Volumen</span></li>
+        <li><span class="en">Add results directly to portfolio or watchlist</span><span class="de">Ergebnisse direkt zum Portfolio oder zur Watchlist hinzufügen</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">research/screens</span>
+      <h3><span class="en">Saved Screens</span><span class="de">Gespeicherte Screens</span></h3>
+      <div class="db-sub"><span class="en">Save filter sets · Rerun instantly · Name and organise</span><span class="de">Filter-Sets speichern · Sofort erneut ausführen · Benennen und organisieren</span></div>
+      <p><span class="en">Build your favourite screening strategies once and save them for repeated use. Your "European dividend growth" screen or "momentum + quality combo" is always one click away. Each saved screen shows how many stocks currently match, so you can immediately see when new opportunities emerge.</span><span class="de">Deine Lieblings-Screening-Strategien einmal erstellen und für die wiederholte Nutzung speichern. Dein "Europäisches Dividendenwachstum"-Screen ist immer einen Klick entfernt.</span></p>
+      <ul>
+        <li><span class="en">Save any filter combination as a named screen</span><span class="de">Beliebige Filterkombination als benannten Screen speichern</span></li>
+        <li><span class="en">Rerun saved screens with one click</span><span class="de">Gespeicherte Screens mit einem Klick erneut ausführen</span></li>
+        <li><span class="en">Current match count shown per saved screen</span><span class="de">Aktuelle Trefferanzahl pro gespeichertem Screen angezeigt</span></li>
+        <li><span class="en">Edit and update screens at any time</span><span class="de">Screens jederzeit bearbeiten und aktualisieren</span></li>
+        <li><span class="en">Unlimited saved screens (Pro)</span><span class="de">Unbegrenzte gespeicherte Screens (Pro)</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">research/watchlist</span>
+      <h3>Watchlist</h3>
+      <div class="db-sub"><span class="en">Track without owning · Live prices · Quick add to portfolio</span><span class="de">Verfolgen ohne Besitz · Live-Preise · Schnell zum Portfolio hinzufügen</span></div>
+      <p><span class="en">Track stocks you're researching without committing to a position. Your watchlist shows live prices, day changes, and key metrics for every stock you're following. When you're ready to buy, add the stock to your portfolio directly from the watchlist.</span><span class="de">Aktien verfolgen, die du recherchierst, ohne eine Position einzugehen. Deine Watchlist zeigt Live-Preise, Tagesveränderungen und wichtige Kennzahlen für jede Aktie, die du verfolgst.</span></p>
+      <ul>
+        <li><span class="en">Live prices and day change for all watched stocks</span><span class="de">Live-Preise und Tagesveränderung für alle beobachteten Aktien</span></li>
+        <li><span class="en">Key metrics: P/E, market cap, 52W range</span><span class="de">Wichtige Kennzahlen: KGV, Marktkapitalisierung, 52W-Bereich</span></li>
+        <li><span class="en">One-click add to portfolio</span><span class="de">Zum Portfolio mit einem Klick hinzufügen</span></li>
+        <li><span class="en">Notes per stock</span><span class="de">Notizen pro Aktie</span></li>
+        <li><span class="en">Supports all major exchanges</span><span class="de">Unterstützt alle großen Börsen</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">research/calendar</span>
+      <h3><span class="en">Calendar</span><span class="de">Kalender</span></h3>
+      <div class="db-sub">Earnings · Ex-Dates · <span class="en">Events</span><span class="de">Ereignisse</span></div>
+      <p><span class="en">Never be caught off-guard by an earnings release or dividend ex-date again. The calendar shows upcoming earnings announcements, dividend ex-dates, and corporate events for all stocks in your portfolio and watchlist. Filter by date range or event type.</span><span class="de">Nie wieder von einer Earnings-Veröffentlichung oder einem Dividenden-Ex-Datum überrascht werden. Der Kalender zeigt bevorstehende Earnings-Ankündigungen, Dividenden-Ex-Dates und Unternehmens-Ereignisse für alle Aktien im Portfolio und in der Watchlist.</span></p>
+      <ul>
+        <li><span class="en">Earnings announcements for portfolio and watchlist</span><span class="de">Earnings-Ankündigungen für Portfolio und Watchlist</span></li>
+        <li><span class="en">Dividend ex-dates and payment dates</span><span class="de">Dividenden-Ex-Dates und Zahlungsdaten</span></li>
+        <li><span class="en">Filter by date range and event type</span><span class="de">Filtern nach Datumsbereich und Ereignistyp</span></li>
+        <li><span class="en">Estimated EPS consensus for earnings</span><span class="de">Geschätzter EPS-Konsens für Earnings</span></li>
+        <li><span class="en">Month and week view</span><span class="de">Monats- und Wochenansicht</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">research/alerts</span>
+      <h3><span class="en">Alert Management</span><span class="de">Alert-Management</span></h3>
+      <div class="db-sub"><span class="en">Price alerts · % change triggers · Multi-condition</span><span class="de">Kursalarme · %-Auslöser · Multi-Bedingung</span></div>
+      <p><span class="en">Set intelligent price alerts for any stock. Get notified when a stock hits your target price, crosses a moving average, or changes by more than a set percentage in a day. Alerts fire via the in-app notification system so you never miss a move on a stock you care about.</span><span class="de">Intelligente Kursalarme für beliebige Aktien setzen. Benachrichtigt werden, wenn eine Aktie deinen Zielkurs erreicht, einen gleitenden Durchschnitt kreuzt oder sich um mehr als einen festgelegten Prozentsatz an einem Tag verändert.</span></p>
+      <ul>
+        <li><span class="en">Price target alerts (above / below)</span><span class="de">Kursziel-Alarme (oben / unten)</span></li>
+        <li><span class="en">Percentage change trigger (daily, weekly)</span><span class="de">Prozentuale Änderungsauslöser (täglich, wöchentlich)</span></li>
+        <li><span class="en">Moving average crossover alerts</span><span class="de">Gleitender-Durchschnitt-Kreuzsignale</span></li>
+        <li><span class="en">Manage all alerts in one dashboard</span><span class="de">Alle Alarme in einem Dashboard verwalten</span></li>
+        <li><span class="en">Alert history with timestamps</span><span class="de">Alarm-Verlauf mit Zeitstempeln</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">research/notifications</span>
+      <h3><span class="en">Notifications</span><span class="de">Benachrichtigungen</span></h3>
+      <div class="db-sub"><span class="en">In-app · Alert history · Read / unread management</span><span class="de">In-App · Alarm-Verlauf · Gelesen / Ungelesen Verwaltung</span></div>
+      <p><span class="en">All your alerts, system messages, and portfolio notifications in one feed. Mark as read, filter by type, and review your full notification history. The notification badge in the nav bar always shows your unread count at a glance.</span><span class="de">Alle deine Alarme, System-Nachrichten und Portfolio-Benachrichtigungen in einem Feed. Als gelesen markieren, nach Typ filtern und den vollständigen Benachrichtigungsverlauf überprüfen.</span></p>
+      <ul>
+        <li><span class="en">Unified feed: alerts, system, portfolio</span><span class="de">Einheitlicher Feed: Alarme, System, Portfolio</span></li>
+        <li><span class="en">Unread count badge in nav bar</span><span class="de">Ungelesener-Zähler-Badge in der Navigationsleiste</span></li>
+        <li><span class="en">Mark as read individually or all at once</span><span class="de">Einzeln oder alle gleichzeitig als gelesen markieren</span></li>
+        <li><span class="en">Filter by notification type</span><span class="de">Nach Benachrichtigungstyp filtern</span></li>
+        <li><span class="en">Full notification history</span><span class="de">Vollständiger Benachrichtigungsverlauf</span></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="sep"></div>
+<div class="section">
+  <div class="cta-banner">
+    <h2><span class="en">Find better stocks, faster</span><span class="de">Bessere Aktien schneller finden</span></h2>
+    <p><span class="en">The screener, watchlist and alert tools are available on the free plan.</span><span class="de">Screener, Watchlist und Alert-Tools sind im kostenlosen Plan verfügbar.</span></p>
+    <a href="https://www.quantpro.de/register" class="btn-cta" target="_blank"><span class="en">Start Researching Free</span><span class="de">Kostenlos starten</span></a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo"><span class="bracket">[</span>QUANTPRO<span class="bracket">]</span></div>
+  <div class="footer-links">
+    <a href="index.html"><span class="en">Overview</span><span class="de">Übersicht</span></a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+    <a href="https://quantpro.store" target="_blank"><span class="en">Pricing</span><span class="de">Preise</span></a>
+  </div>
+  <div class="footer-copy">© 2026 QuantPro</div>
+</footer>
+
+<script>
+function setLang(l){document.body.classList.toggle('lang-de',l==='de');localStorage.setItem('qp-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}
+function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('qp-theme',t);}
+(function(){const l=localStorage.getItem('qp-lang')||'en';if(l==='de'){document.body.classList.add('lang-de');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}const t=localStorage.getItem('qp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+</body>
+</html>
