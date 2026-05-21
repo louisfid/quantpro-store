@@ -9,12 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-.cmd-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.cmd-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px;table-layout:fixed}
+.cmd-table colgroup .col-cmd{width:130px}
+.cmd-table colgroup .col-arg{width:160px}
+.cmd-table colgroup .col-desc{width:auto}
 .cmd-table th{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-family:'JetBrains Mono',monospace}
-.cmd-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text2);line-height:1.55}
+.cmd-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text2);line-height:1.55;text-align:left}
 .cmd-table tr:last-child td{border-bottom:none}
 .cmd-table td:first-child{font-family:'JetBrains Mono',monospace;color:var(--green);font-size:12px;white-space:nowrap;font-weight:500}
-.cmd-table td:nth-child(2){color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap}
+.cmd-table td:nth-child(2){color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap;text-align:left}
 .cmd-section-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);padding:20px 12px 6px;font-family:'JetBrains Mono',monospace}
 .cmd-block{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
 </style>
@@ -274,6 +277,7 @@
       <div class="cmd-block">
         <div class="cmd-section-label"><span class="en">Equity &amp; Price</span><span class="de">Aktien &amp; Kurs</span></div>
         <table class="cmd-table">
+          <colgroup><col class="col-cmd"><col class="col-arg"><col class="col-desc"></colgroup>
           <tr><th><span class="en">Command</span><span class="de">Befehl</span></th><th><span class="en">Arguments</span><span class="de">Argumente</span></th><th><span class="en">Description</span><span class="de">Beschreibung</span></th></tr>
           <tr><td>equity</td><td>&lt;TICKER&gt;</td><td><span class="en">Full equity profile with fundamentals</span><span class="de">Vollständiges Aktien-Profil mit Fundamentaldaten</span></td></tr>
           <tr><td>price</td><td>&lt;TICKER&gt;</td><td><span class="en">Live price panel with daily stats</span><span class="de">Live-Kurs-Panel mit Tagesstatistiken</span></td></tr>
