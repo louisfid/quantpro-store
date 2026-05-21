@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuantPro — Quant Lab</title>
+<meta name="description" content="Professional quantitative tools: factor models, regime detection, pairs trading, ML signals, and portfolio construction.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="bracket">[</span><span class="logo-text">QUANTPRO</span><span class="bracket">]</span></a>
+  <div class="nav-links">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html" class="active">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-sm lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="btn-sm lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+    <button class="btn-sm" onclick="toggleTheme()"><span class="en">Theme</span><span class="de">Design</span></button>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">QuantPro</a> <span>›</span> <span>Quant Lab</span></div>
+
+<div class="hero">
+  <div class="eyebrow">Quant Lab</div>
+  <h1><span class="en">Institutional quant tools,<br><em>for every investor</em></span><span class="de">Institutionelle Quant-Tools,<br><em>für jeden Investor</em></span></h1>
+  <p><span class="en">The Quant Lab brings hedge-fund-grade analytical tools to your fingertips. Factor models, portfolio construction, regime detection, ML signals, options analysis — all in one module.</span><span class="de">Das Quant Lab bringt Hedge-Fonds-taugliche Analysewerkzeuge an deine Fingerspitzen. Faktormodelle, Portfolio-Konstruktion, Regime-Erkennung, ML-Signale, Optionsanalyse — alles in einem Modul.</span></p>
+</div>
+
+<div class="mockup-wrap">
+  <div class="mockup">
+    <div class="mockup-bar">
+      <div class="mockup-dot r"></div><div class="mockup-dot y"></div><div class="mockup-dot g"></div>
+      <div class="mockup-url">www.quantpro.de/quant — Quant Lab</div>
+    </div>
+    <div class="mockup-body">
+      <div class="mock-stat"><div class="mock-stat-label">Beta (β)</div><div class="mock-stat-value">0.84</div><div class="mock-stat-change col-d"><span class="en">vs S&P 500</span><span class="de">vs. S&P 500</span></div></div>
+      <div class="mock-stat"><div class="mock-stat-label">Alpha (α)</div><div class="mock-stat-value">+4.2%</div><div class="mock-stat-change up">▲ <span class="en">annualised</span><span class="de">annualisiert</span></div></div>
+      <div class="mock-stat"><div class="mock-stat-label">Regime</div><div class="mock-stat-value col-d" style="color:var(--green);font-size:14px;padding-top:4px">BULL</div><div class="mock-stat-change up">▲ 67% <span class="en">confidence</span><span class="de">Konfidenz</span></div></div>
+      <div class="mock-stat"><div class="mock-stat-label">Sharpe</div><div class="mock-stat-value">1.42</div><div class="mock-stat-change up">▲ <span class="en">above benchmark</span><span class="de">über Benchmark</span></div></div>
+      <div class="mock-table">
+        <div class="mock-row hdr"><span><span class="en">Factor</span><span class="de">Faktor</span></span><span><span class="en">Score</span><span class="de">Score</span></span><span><span class="en">Signal</span><span class="de">Signal</span></span><span><span class="en">Weight</span><span class="de">Gewicht</span></span><span>Z-Score</span></div>
+        <div class="mock-row"><span>Value</span><span>72/100</span><span class="col-g">LONG</span><span class="col-d">25%</span><span class="col-g">+1.4</span></div>
+        <div class="mock-row"><span>Momentum</span><span>61/100</span><span class="col-g">LONG</span><span class="col-d">20%</span><span class="col-g">+0.8</span></div>
+        <div class="mock-row"><span>Quality</span><span>84/100</span><span class="col-g">LONG</span><span class="col-d">30%</span><span class="col-g">+2.1</span></div>
+        <div class="mock-row"><span>Volatility</span><span>41/100</span><span class="col-r">SHORT</span><span class="col-d">25%</span><span class="col-r">−0.6</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="section-eyebrow"><span class="en">All Features</span><span class="de">Alle Funktionen</span></div>
+  <h2><span class="en">Every tool in Quant Lab</span><span class="de">Alle Tools im Quant Lab</span></h2>
+  <p class="section-sub"><span class="en">19 quantitative tools covering factor analysis, portfolio construction, regime detection, machine learning signals, and more.</span><span class="de">19 quantitative Tools für Faktoranalyse, Portfolio-Konstruktion, Regime-Erkennung, Machine-Learning-Signale und mehr.</span></p>
+
+  <div class="detail-list">
+
+    <div class="detail-block">
+      <span class="db-tag">quant/metrics</span>
+      <h3><span class="en">Quant Metrics</span><span class="de">Quant-Metriken</span></h3>
+      <div class="db-sub">β · α · GARCH · Risk Parity · Sharpe · Sortino</div>
+      <p><span class="en">The core quantitative metrics dashboard. Beta measures your portfolio's sensitivity to the market. Alpha measures excess return above the benchmark. GARCH models time-varying volatility clusters. Risk Parity calculates how much each position contributes to total portfolio risk.</span><span class="de">Das zentrale quantitative Metriken-Dashboard. Beta misst die Sensitivität des Portfolios gegenüber dem Markt. Alpha misst die Überrendite über dem Benchmark. GARCH modelliert zeitvariable Volatilitäts-Cluster.</span></p>
+      <ul>
+        <li><span class="en">Beta (β): market sensitivity of your portfolio</span><span class="de">Beta (β): Marktsensitivität deines Portfolios</span></li>
+        <li><span class="en">Alpha (α): excess return above benchmark</span><span class="de">Alpha (α): Überrendite über dem Benchmark</span></li>
+        <li><span class="en">GARCH(1,1) volatility model</span><span class="de">GARCH(1,1) Volatilitätsmodell</span></li>
+        <li><span class="en">Risk Parity weights per position</span><span class="de">Risk-Parity-Gewichte pro Position</span></li>
+        <li><span class="en">Sharpe and Sortino ratios (rolling)</span><span class="de">Sharpe- und Sortino-Ratio (rollend)</span></li>
+        <li><span class="en">Information ratio vs benchmark</span><span class="de">Information Ratio vs. Benchmark</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">quant/construction</span>
+      <h3><span class="en">Portfolio Construction</span><span class="de">Portfolio-Konstruktion</span></h3>
+      <div class="db-sub">Black-Litterman · HRP · mv-Kelly · CDaR</div>
+      <p><span class="en">Four portfolio construction methods used by quantitative hedge funds. Black-Litterman blends market equilibrium with your own views. HRP (Hierarchical Risk Parity) allocates based on correlation clusters. mv-Kelly maximises the Kelly criterion for position sizing. CDaR optimises for Conditional Drawdown at Risk.</span><span class="de">Vier Portfolio-Konstruktionsmethoden von quantitativen Hedge Funds. Black-Litterman verbindet Marktgleichgewicht mit eigenen Ansichten. HRP allokiert basierend auf Korrelations-Clustern. mv-Kelly maximiert das Kelly-Kriterium für die Positionsgrößenbestimmung.</span></p>
+      <ul>
+        <li><span class="en">Black-Litterman with custom view inputs</span><span class="de">Black-Litterman mit eigenen Ansichts-Eingaben</span></li>
+        <li><span class="en">HRP: hierarchical clustering-based allocation</span><span class="de">HRP: hierarchisches Clustering-basiertes Allokation</span></li>
+        <li><span class="en">mv-Kelly: mean-variance Kelly criterion</span><span class="de">mv-Kelly: Mittelwert-Varianz Kelly-Kriterium</span></li>
+        <li><span class="en">CDaR: optimise for Conditional Drawdown at Risk</span><span class="de">CDaR: Optimierung für Conditional Drawdown at Risk</span></li>
+        <li><span class="en">Compare allocations side by side</span><span class="de">Allokationen nebeneinander vergleichen</span></li>
+        <li><span class="en">Export optimal weights to portfolio</span><span class="de">Optimale Gewichte in Portfolio exportieren</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">quant/regime</span>
+      <h3><span class="en">Regime Detection</span><span class="de">Regime-Erkennung</span></h3>
+      <div class="db-sub">Bull · Bear · Sideways · Markov · <span class="en">Confidence</span><span class="de">Konfidenz</span></div>
+      <p><span class="en">Markets move through distinct regimes: bull runs, bear markets, and sideways consolidation. QuantPro uses a Hidden Markov Model (HMM) to detect the current regime and estimate the probability of transitioning to another. Knowing the regime helps you size positions and manage exposure accordingly.</span><span class="de">Märkte bewegen sich durch verschiedene Regime: Bullenmärkte, Bärenmärkte und Seitwärtsbewegungen. QuantPro verwendet ein Hidden-Markov-Modell (HMM) zur Erkennung des aktuellen Regimes und Schätzung der Übergangswahrscheinlichkeit.</span></p>
+      <ul>
+        <li><span class="en">3-state HMM: Bull, Bear, Sideways</span><span class="de">3-Zustands-HMM: Bull, Bear, Seitwärts</span></li>
+        <li><span class="en">Current regime with confidence score</span><span class="de">Aktuelles Regime mit Konfidenz-Score</span></li>
+        <li><span class="en">Transition probability matrix</span><span class="de">Übergangswahrscheinlichkeits-Matrix</span></li>
+        <li><span class="en">Historical regime timeline chart</span><span class="de">Historisches Regime-Zeitlinien-Diagramm</span></li>
+        <li><span class="en">Duration in current regime</span><span class="de">Dauer im aktuellen Regime</span></li>
+        <li><span class="en">Select benchmark (SPY, DAX, custom)</span><span class="de">Benchmark auswählen (SPY, DAX, benutzerdefiniert)</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">quant/pairs</span>
+      <h3><span class="en">Pairs Scanner</span><span class="de">Pairs-Scanner</span></h3>
+      <div class="db-sub"><span class="en">Cointegration · Spread · Mean reversion · Z-score</span><span class="de">Kointegration · Spread · Mean Reversion · Z-Score</span></div>
+      <p><span class="en">Find statistically cointegrated stock pairs for pairs trading strategies. Two stocks that are cointegrated move together over time, and temporary divergences create mean-reverting trading opportunities. The scanner identifies pairs, ranks them by signal strength, and shows the current spread z-score.</span><span class="de">Statistisch kointegierte Aktienpaare für Pairs-Trading-Strategien finden. Zwei kointegierte Aktien bewegen sich im Laufe der Zeit zusammen, und temporäre Abweichungen schaffen Mean-Reversion-Handelsmöglichkeiten.</span></p>
+      <ul>
+        <li><span class="en">Cointegration test (Engle-Granger)</span><span class="de">Kointegrations-Test (Engle-Granger)</span></li>
+        <li><span class="en">Pairs ranked by signal strength</span><span class="de">Paare nach Signalstärke eingestuft</span></li>
+        <li><span class="en">Current spread and z-score</span><span class="de">Aktueller Spread und Z-Score</span></li>
+        <li><span class="en">Historical spread chart</span><span class="de">Historisches Spread-Diagramm</span></li>
+        <li><span class="en">Half-life of mean reversion</span><span class="de">Halbwertszeit der Mean Reversion</span></li>
+        <li><span class="en">Entry/exit signal thresholds</span><span class="de">Einstiegs-/Ausstiegssignal-Schwellenwerte</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">quant/ml</span>
+      <h3><span class="en">AI ML Signals</span><span class="de">KI ML-Signale</span></h3>
+      <div class="db-sub"><span class="en">Anomaly detection · Clustering · Regime drift · Feature importance</span><span class="de">Anomalie-Erkennung · Clustering · Regime-Drift · Feature-Wichtigkeit</span></div>
+      <p><span class="en">Machine learning applied to your portfolio. The anomaly detection module flags unusual price patterns or return distributions. Clustering groups your positions by return correlation. Drift detection identifies when market conditions change and your model assumptions may no longer hold.</span><span class="de">Machine Learning auf dein Portfolio angewendet. Das Anomalie-Erkennungsmodul kennzeichnet ungewöhnliche Preismuster oder Renditeverteilungen. Clustering gruppiert Positionen nach Renditekorrelation.</span></p>
+      <ul>
+        <li><span class="en">Anomaly detection with flagging system</span><span class="de">Anomalie-Erkennung mit Kennzeichnungssystem</span></li>
+        <li><span class="en">Return-based position clustering</span><span class="de">Renditebasiertes Positions-Clustering</span></li>
+        <li><span class="en">Market regime drift detection</span><span class="de">Markt-Regime-Drift-Erkennung</span></li>
+        <li><span class="en">Feature importance for factor models</span><span class="de">Feature-Wichtigkeit für Faktormodelle</span></li>
+        <li><span class="en">Visualised as heatmaps and scatter plots</span><span class="de">Als Heatmaps und Streudiagramme visualisiert</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/drawdown</span>
+      <h3>Drawdown</h3>
+      <div class="db-sub"><span class="en">Underwater chart · Max drawdown · Recovery time</span><span class="de">Underwater-Chart · Maximaler Drawdown · Erholungszeit</span></div>
+      <p><span class="en">The underwater chart shows how far your portfolio is below its previous peak at any point in time. It's the most intuitive way to understand the pain of holding through a downturn. Track maximum drawdown, the duration of each drawdown, and how long recovery took.</span><span class="de">Das Underwater-Chart zeigt, wie weit dein Portfolio zu jedem Zeitpunkt unter seinem vorherigen Höchststand liegt. Der intuitivste Weg, den Schmerz des Haltens durch einen Abschwung zu verstehen.</span></p>
+      <ul>
+        <li><span class="en">Underwater chart (portfolio below peak)</span><span class="de">Underwater-Chart (Portfolio unter Hochpunkt)</span></li>
+        <li><span class="en">Maximum drawdown (all-time)</span><span class="de">Maximaler Drawdown (gesamt)</span></li>
+        <li><span class="en">Drawdown duration and recovery time</span><span class="de">Drawdown-Dauer und Erholungszeit</span></li>
+        <li><span class="en">Top 5 worst drawdown periods</span><span class="de">Top 5 schlimmste Drawdown-Perioden</span></li>
+        <li><span class="en">Compare to benchmark drawdown</span><span class="de">Mit Benchmark-Drawdown vergleichen</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/costs</span>
+      <h3><span class="en">Transaction Costs</span><span class="de">Transaktionskosten</span></h3>
+      <div class="db-sub"><span class="en">Cost simulator · Rebalancing impact · Fee drag</span><span class="de">Kosten-Simulator · Rebalancing-Einfluss · Gebühren-Drag</span></div>
+      <p><span class="en">Transaction costs silently erode returns. The cost simulator lets you model the impact of fees, spreads, and taxes on your portfolio performance. See how much rebalancing frequency costs you, and understand the fee drag on your long-term returns.</span><span class="de">Transaktionskosten erodieren Renditen unbemerkt. Der Kosten-Simulator ermöglicht die Modellierung des Einflusses von Gebühren, Spreads und Steuern auf die Portfolio-Performance.</span></p>
+      <ul>
+        <li><span class="en">Model broker commissions and spreads</span><span class="de">Broker-Provisionen und Spreads modellieren</span></li>
+        <li><span class="en">Tax impact simulation (capital gains)</span><span class="de">Steuereinfluss-Simulation (Kapitalgewinne)</span></li>
+        <li><span class="en">Rebalancing frequency cost analysis</span><span class="de">Rebalancing-Häufigkeits-Kostenanalyse</span></li>
+        <li><span class="en">Annual fee drag on long-term returns</span><span class="de">Jährlicher Gebühren-Drag auf langfristige Renditen</span></li>
+        <li><span class="en">Net-of-fee performance comparison</span><span class="de">Gebührenbereinigter Leistungsvergleich</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/tracking-error</span>
+      <h3>Tracking Error</h3>
+      <div class="db-sub"><span class="en">Decomposition · Active share · Factor tilts</span><span class="de">Zerlegung · Active Share · Faktor-Tilts</span></div>
+      <p><span class="en">Tracking error measures how much your portfolio deviates from its benchmark. The decomposition breaks down whether that deviation comes from sector tilts, factor bets, or individual stock selection. Active Share shows how different your portfolio truly is from the index.</span><span class="de">Tracking Error misst, wie stark dein Portfolio von seinem Benchmark abweicht. Die Zerlegung zeigt, ob die Abweichung von Sektor-Tilts, Faktor-Wetten oder individueller Aktienauswahl stammt.</span></p>
+      <ul>
+        <li><span class="en">Tracking error vs any benchmark</span><span class="de">Tracking Error vs. beliebigem Benchmark</span></li>
+        <li><span class="en">Active Share calculation</span><span class="de">Active Share Berechnung</span></li>
+        <li><span class="en">Decomposition: sector, factor, stock selection</span><span class="de">Zerlegung: Sektor, Faktor, Aktienauswahl</span></li>
+        <li><span class="en">Rolling tracking error chart</span><span class="de">Rollender Tracking-Error-Chart</span></li>
+        <li><span class="en">Information ratio</span><span class="de">Information Ratio</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">investment_case</span>
+      <h3><span class="en">Investment Cases</span><span class="de">Investment Cases</span></h3>
+      <div class="db-sub"><span class="en">Thesis · Risks · Catalysts · Notes</span><span class="de">These · Risiken · Katalysatoren · Notizen</span></div>
+      <p><span class="en">Document the investment thesis for each position. Write down why you bought it, what risks could invalidate the thesis, and what catalysts could drive the stock higher. Having a structured case keeps you disciplined and helps you decide whether to hold, add, or exit when things change.</span><span class="de">Die Investment-These für jede Position dokumentieren. Aufschreiben, warum du gekauft hast, welche Risiken die These ungültig machen könnten und welche Katalysatoren die Aktie höher treiben könnten.</span></p>
+      <ul>
+        <li><span class="en">Thesis text with rich formatting</span><span class="de">These-Text mit umfangformatierung</span></li>
+        <li><span class="en">Risk list with severity rating</span><span class="de">Risikoliste mit Schweregrad-Bewertung</span></li>
+        <li><span class="en">Catalyst tracking with target dates</span><span class="de">Katalysator-Tracking mit Zieldaten</span></li>
+        <li><span class="en">Linked directly to portfolio position</span><span class="de">Direkt mit Portfolio-Position verknüpft</span></li>
+        <li><span class="en">Update history and timestamps</span><span class="de">Update-Verlauf und Zeitstempel</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">peer</span>
+      <h3><span class="en">Peer Compare</span><span class="de">Peer-Vergleich</span></h3>
+      <div class="db-sub"><span class="en">Radar chart · Key metrics · Sector peers</span><span class="de">Radar-Chart · Kennzahlen · Sektor-Peers</span></div>
+      <p><span class="en">Compare any stock against its sector peers on a radar chart covering valuation, growth, quality, and momentum. Instantly see whether your holding is cheap or expensive relative to competitors, and whether it leads or lags on key metrics like ROE, revenue growth, and margins.</span><span class="de">Beliebige Aktie auf einem Radar-Chart mit Branchengleichgestellten vergleichen, das Bewertung, Wachstum, Qualität und Momentum abdeckt.</span></p>
+      <ul>
+        <li><span class="en">Radar chart: valuation, growth, quality, momentum</span><span class="de">Radar-Chart: Bewertung, Wachstum, Qualität, Momentum</span></li>
+        <li><span class="en">Auto-identified sector peers</span><span class="de">Automatisch identifizierte Sektor-Peers</span></li>
+        <li><span class="en">Side-by-side metric table</span><span class="de">Nebeneinander-Kennzahlen-Tabelle</span></li>
+        <li><span class="en">Relative valuation premium/discount</span><span class="de">Relative Bewertungs-Prämie/-Abschlag</span></li>
+        <li><span class="en">Works for any ticker</span><span class="de">Funktioniert für beliebige Ticker</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">ai/review</span>
+      <h3><span class="en">AI Review</span><span class="de">KI-Review</span></h3>
+      <div class="db-sub"><span class="en">Full portfolio analysis · AI-generated report · Actionable insights</span><span class="de">Vollständige Portfolio-Analyse · KI-generierter Bericht · Handlungsempfehlungen</span></div>
+      <p><span class="en">A comprehensive AI-generated analysis of your entire portfolio. The review covers portfolio composition, risk concentration, factor exposures, and specific positions — and produces a written report with actionable insights and suggested improvements. Updated on demand.</span><span class="de">Eine umfassende KI-generierte Analyse deines gesamten Portfolios. Die Überprüfung deckt Portfolio-Zusammensetzung, Risikokonzentration, Faktorexpositionen und spezifische Positionen ab.</span></p>
+      <ul>
+        <li><span class="en">Full written portfolio analysis report</span><span class="de">Vollständiger schriftlicher Portfolio-Analysebericht</span></li>
+        <li><span class="en">Risk concentration warnings</span><span class="de">Risikokonzentrations-Warnungen</span></li>
+        <li><span class="en">Factor exposure summary</span><span class="de">Faktorexpositions-Zusammenfassung</span></li>
+        <li><span class="en">Actionable improvement suggestions</span><span class="de">Handlungsfähige Verbesserungsvorschläge</span></li>
+        <li><span class="en">Per-position AI commentary</span><span class="de">KI-Kommentar pro Position</span></li>
+        <li><span class="en">Generate on demand, any time</span><span class="de">Jederzeit auf Anfrage generieren</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">dividends</span>
+      <h3><span class="en">Dividends</span><span class="de">Dividenden</span></h3>
+      <div class="db-sub"><span class="en">Income tracking · Ex-dates · Yield on cost</span><span class="de">Ertrags-Tracking · Ex-Termine · Rendite auf Kosten</span></div>
+      <p><span class="en">Track all dividend income across your portfolio. See upcoming ex-dates, projected annual income, and yield-on-cost for each dividend-paying position. The dividend calendar shows the full payment schedule for the year ahead.</span><span class="de">Alle Dividendenerträge im gesamten Portfolio verfolgen. Bevorstehende Ex-Termine, projiziertes Jahreseinkommen und Rendite auf Kosten für jede dividendenzahlende Position sehen.</span></p>
+      <ul>
+        <li><span class="en">Annual dividend income projection</span><span class="de">Jährliche Dividendenertrags-Projektion</span></li>
+        <li><span class="en">Upcoming ex-dates calendar</span><span class="de">Bevorstehende Ex-Termine Kalender</span></li>
+        <li><span class="en">Yield-on-cost per position</span><span class="de">Rendite-auf-Kosten pro Position</span></li>
+        <li><span class="en">Dividend growth history</span><span class="de">Dividendenwachstums-Geschichte</span></li>
+        <li><span class="en">Income by month chart</span><span class="de">Einkommen nach Monat Diagramm</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">options/advisor</span>
+      <h3><span class="en">Options Advisor</span><span class="de">Optionen-Berater</span></h3>
+      <div class="db-sub">Covered Call · Cash-Secured Put · Greeks · <span class="en">Premium income</span><span class="de">Prämien-Einkommen</span></div>
+      <p><span class="en">Generate premium income on your existing stock positions with covered calls, or use cash-secured puts to acquire stocks at a discount. The options advisor suggests strike prices and expiry dates based on your outlook, shows the option Greeks, and calculates the potential annualised premium income.</span><span class="de">Prämien-Einkommen auf bestehenden Aktienpositionen mit gedeckten Calls generieren oder Cash-Secured Puts verwenden, um Aktien mit Rabatt zu erwerben.</span></p>
+      <ul>
+        <li><span class="en">Covered Call strategy suggestions</span><span class="de">Covered-Call-Strategie-Vorschläge</span></li>
+        <li><span class="en">Cash-Secured Put suggestions</span><span class="de">Cash-Secured-Put-Vorschläge</span></li>
+        <li><span class="en">Strike price and expiry recommendations</span><span class="de">Basispreis- und Verfallsempfehlungen</span></li>
+        <li><span class="en">Option Greeks (Delta, Theta, Vega)</span><span class="de">Optionen-Griechen (Delta, Theta, Vega)</span></li>
+        <li><span class="en">Annualised premium income calculation</span><span class="de">Annualisierte Prämien-Einkommensberechnung</span></li>
+        <li><span class="en">Breakeven and max profit/loss</span><span class="de">Break-Even und maximaler Gewinn/Verlust</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">sectors</span>
+      <h3><span class="en">Sector Rotation</span><span class="de">Sektor-Rotation</span></h3>
+      <div class="db-sub"><span class="en">Leader vs Laggard · Momentum ranking · Rotation signal</span><span class="de">Leader vs. Laggard · Momentum-Ranking · Rotationssignal</span></div>
+      <p><span class="en">Markets rotate between sectors as economic cycles evolve. The sector rotation module ranks all major GICS sectors by momentum, relative strength, and flow data. See which sectors are leading, which are lagging, and which are transitioning — so you can position your portfolio accordingly.</span><span class="de">Märkte rotieren zwischen Sektoren, wenn sich Wirtschaftszyklen entwickeln. Das Sektor-Rotations-Modul ordnet alle wichtigen GICS-Sektoren nach Momentum, relativer Stärke und Flussdaten ein.</span></p>
+      <ul>
+        <li><span class="en">All 11 GICS sectors ranked by momentum</span><span class="de">Alle 11 GICS-Sektoren nach Momentum eingestuft</span></li>
+        <li><span class="en">Leader vs Laggard classification</span><span class="de">Leader vs. Laggard Klassifizierung</span></li>
+        <li><span class="en">Relative rotation graph (RRG)</span><span class="de">Relative Rotationsgraph (RRG)</span></li>
+        <li><span class="en">Your portfolio's sector exposure vs optimal</span><span class="de">Portfolio-Sektor-Exposition vs. optimal</span></li>
+        <li><span class="en">3M and 6M sector performance comparison</span><span class="de">3M und 6M Sektor-Performance-Vergleich</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/backtest</span>
+      <h3>Backtest</h3>
+      <div class="db-sub"><span class="en">Historical simulation · Strategy testing · "What if?"</span><span class="de">Historische Simulation · Strategie-Testing · "Was wäre, wenn?"</span></div>
+      <p><span class="en">Run your portfolio strategy against historical market data. The backtest engine lets you test different allocation weights, rebalancing frequencies, and entry/exit rules — and shows how your strategy would have performed over the chosen period, with full risk and return metrics.</span><span class="de">Portfolio-Strategie gegen historische Marktdaten testen. Die Backtest-Engine ermöglicht das Testen verschiedener Allokationsgewichte, Rebalancing-Häufigkeiten und Einstiegs-/Ausstiegsregeln.</span></p>
+      <ul>
+        <li><span class="en">Historical simulation up to 10 years</span><span class="de">Historische Simulation bis zu 10 Jahren</span></li>
+        <li><span class="en">Custom allocation weights per period</span><span class="de">Eigene Allokationsgewichte pro Periode</span></li>
+        <li><span class="en">Rebalancing frequency testing</span><span class="de">Rebalancing-Häufigkeits-Testing</span></li>
+        <li><span class="en">Full risk/return metrics on backtest results</span><span class="de">Vollständige Risiko-/Rendite-Metriken auf Backtest-Ergebnissen</span></li>
+        <li><span class="en">Compare vs buy-and-hold benchmark</span><span class="de">Mit Buy-and-Hold-Benchmark vergleichen</span></li>
+        <li><span class="en">Transaction cost inclusion</span><span class="de">Transaktionskosten-Einbeziehung</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">portfolio/esg</span>
+      <h3>ESG</h3>
+      <div class="db-sub"><span class="en">Environmental · Social · Governance · Risk scoring</span><span class="de">Umwelt · Soziales · Unternehmensführung · Risiko-Scoring</span></div>
+      <p><span class="en">Understand the ESG profile of your portfolio. Each position is scored on Environmental, Social, and Governance dimensions. See your portfolio's aggregate ESG score, identify the highest-risk holdings, and understand which factors drive the scores.</span><span class="de">Das ESG-Profil deines Portfolios verstehen. Jede Position wird in den Dimensionen Umwelt, Soziales und Unternehmensführung bewertet.</span></p>
+      <ul>
+        <li><span class="en">E, S, G scores per position</span><span class="de">E, S, G Scores pro Position</span></li>
+        <li><span class="en">Portfolio aggregate ESG score</span><span class="de">Portfolio-Aggregat-ESG-Score</span></li>
+        <li><span class="en">Highest ESG risk positions flagged</span><span class="de">Höchste ESG-Risiko-Positionen gekennzeichnet</span></li>
+        <li><span class="en">Controversy and watchlist alerts</span><span class="de">Kontrovers- und Watchlist-Alarme</span></li>
+        <li><span class="en">Sustainability rating comparison</span><span class="de">Nachhaltigkeitsbewertungs-Vergleich</span></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <span class="db-tag">report/pdf</span>
+      <h3><span class="en">PDF Report & CSV Export</span><span class="de">PDF-Bericht & CSV-Export</span></h3>
+      <div class="db-sub"><span class="en">One-click export · Full portfolio data · Share-ready</span><span class="de">Ein-Klick-Export · Vollständige Portfolio-Daten · Teilbar</span></div>
+      <p><span class="en">Export your portfolio as a professional PDF report or a structured CSV file. The PDF report includes all key metrics, charts, and analytics in a clean, shareable format. The CSV export gives you raw position data for use in your own spreadsheet models.</span><span class="de">Portfolio als professionellen PDF-Bericht oder strukturierte CSV-Datei exportieren. Der PDF-Bericht enthält alle wichtigen Metriken, Diagramme und Analysen in einem sauberen, teilbaren Format.</span></p>
+      <ul>
+        <li><span class="en">Professional PDF with charts and metrics</span><span class="de">Professionelles PDF mit Diagrammen und Metriken</span></li>
+        <li><span class="en">CSV with all position data and P&L</span><span class="de">CSV mit allen Positionsdaten und P&L</span></li>
+        <li><span class="en">One-click generation</span><span class="de">Ein-Klick-Generierung</span></li>
+        <li><span class="en">Include/exclude specific sections</span><span class="de">Bestimmte Abschnitte ein-/ausschließen</span></li>
+        <li><span class="en">Timestamped and ready to share</span><span class="de">Zeitgestempelt und teilbereit</span></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="sep"></div>
+<div class="section">
+  <div class="cta-banner">
+    <h2><span class="en">Trade like a quant</span><span class="de">Handle wie ein Quant</span></h2>
+    <p><span class="en">All Quant Lab features are available on the Pro plan. Start with a free trial.</span><span class="de">Alle Quant-Lab-Funktionen sind im Pro-Plan verfügbar. Starte mit einer kostenlosen Testversion.</span></p>
+    <a href="https://www.quantpro.de/register" class="btn-cta" target="_blank"><span class="en">Start Pro Trial</span><span class="de">Pro-Testversion starten</span></a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo"><span class="bracket">[</span>QUANTPRO<span class="bracket">]</span></div>
+  <div class="footer-links">
+    <a href="index.html"><span class="en">Overview</span><span class="de">Übersicht</span></a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="research.html">Research</a>
+    <a href="terminal.html">Terminal</a>
+    <a href="https://quantpro.store" target="_blank"><span class="en">Pricing</span><span class="de">Preise</span></a>
+  </div>
+  <div class="footer-copy">© 2026 QuantPro</div>
+</footer>
+
+<script>
+function setLang(l){document.body.classList.toggle('lang-de',l==='de');localStorage.setItem('qp-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}
+function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('qp-theme',t);}
+(function(){const l=localStorage.getItem('qp-lang')||'en';if(l==='de'){document.body.classList.add('lang-de');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}const t=localStorage.getItem('qp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+</body>
+</html>
