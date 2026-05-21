@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuantPro — Terminal</title>
+<meta name="description" content="A Bloomberg-style command terminal with real-time market data, macro panels, equity tools, and a full command library.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.cmd-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.cmd-table th{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-family:'JetBrains Mono',monospace}
+.cmd-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text2);line-height:1.55}
+.cmd-table tr:last-child td{border-bottom:none}
+.cmd-table td:first-child{font-family:'JetBrains Mono',monospace;color:var(--green);font-size:12px;white-space:nowrap;font-weight:500}
+.cmd-table td:nth-child(2){color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap}
+.cmd-section-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);padding:20px 12px 6px;font-family:'JetBrains Mono',monospace}
+.cmd-block{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="bracket">[</span><span class="logo-text">QUANTPRO</span><span class="bracket">]</span></a>
+  <div class="nav-links">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html" class="active">Terminal</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-sm lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="btn-sm lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+    <button class="btn-sm" onclick="toggleTheme()"><span class="en">Theme</span><span class="de">Design</span></button>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">QuantPro</a> <span>›</span> <span>Terminal</span></div>
+
+<div class="hero">
+  <div class="eyebrow">Terminal</div>
+  <h1><span class="en">Bloomberg-style intelligence,<br><em>command by command</em></span><span class="de">Bloomberg-ähnliche Intelligenz,<br><em>Befehl für Befehl</em></span></h1>
+  <p><span class="en">A professional command-line terminal for market data, analysis, and portfolio intelligence. Type a command, get institutional-grade output — real-time prices, macro panels, FX rates, earnings calendars, and more.</span><span class="de">Ein professionelles Kommandozeilen-Terminal für Marktdaten, Analysen und Portfolio-Intelligenz. Befehl eingeben, institutionelle Ausgabe erhalten — Echtzeiskurse, Makro-Panels, FX-Kurse, Earnings-Kalender und mehr.</span></p>
+</div>
+
+<!-- TERMINAL MOCKUP -->
+<div class="mockup-wrap">
+  <div class="mockup">
+    <div class="mockup-bar">
+      <div class="mockup-dot r"></div><div class="mockup-dot y"></div><div class="mockup-dot g"></div>
+      <div class="mockup-url">www.quantpro.de/terminal — Terminal</div>
+    </div>
+    <div class="mockup-body" style="display:block;padding:0;background:#0D1117">
+      <div style="padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase">QUANTPRO TERMINAL v2.0</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green)">● LIVE</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);margin-left:auto">NYSE: OPEN · LSE: CLOSED · XETRA: OPEN</div>
+      </div>
+      <div style="padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:2">
+        <div style="color:var(--dim)">&gt; <span style="color:var(--text)">equity AAPL</span></div>
+        <div style="color:var(--green)">AAPL  Apple Inc.  NASDAQ</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 12px">
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 12px"><div style="color:var(--dim);font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Price</div><div style="color:var(--text);font-size:16px;font-weight:700">$189.42</div><div style="color:var(--green);font-size:10px">▲ +1.24%</div></div>
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 12px"><div style="color:var(--dim);font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Mkt Cap</div><div style="color:var(--text);font-size:16px;font-weight:700">$2.94T</div><div style="color:var(--dim);font-size:10px">Large Cap</div></div>
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 12px"><div style="color:var(--dim);font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">P/E</div><div style="color:var(--text);font-size:16px;font-weight:700">29.4x</div><div style="color:var(--dim);font-size:10px">Fwd 26.1x</div></div>
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 12px"><div style="color:var(--dim);font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">52W Range</div><div style="color:var(--text);font-size:13px;font-weight:700">$164–$199</div><div style="color:var(--green);font-size:10px">Near high</div></div>
+        </div>
+        <div style="color:var(--dim)">&gt; <span style="color:var(--text)">fx USD EUR GBP JPY</span></div>
+        <div style="color:var(--dim);font-size:10px;margin-top:4px">EUR/USD <span style="color:var(--text)">1.0842</span> &nbsp; GBP/USD <span style="color:var(--text)">1.2614</span> &nbsp; USD/JPY <span style="color:var(--text)">149.32</span> &nbsp; <span style="color:var(--green)">Live ●</span></div>
+        <div style="margin-top:10px;color:var(--dim)">&gt; <span style="color:var(--green)">_</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE SECTIONS -->
+<div class="section" style="padding-top:0">
+  <div class="section-eyebrow"><span class="en">All Features</span><span class="de">Alle Funktionen</span></div>
+  <h2><span class="en">Every tool in the Terminal</span><span class="de">Alle Tools im Terminal</span></h2>
+  <p class="section-sub"><span class="en">From single-stock deep-dives to live macro dashboards — the Terminal puts real-time market intelligence behind a clean command interface.</span><span class="de">Von Einzel-Aktien-Analysen bis zu Live-Makro-Dashboards — das Terminal bringt institutionelle Marktintelligenz hinter eine saubere Kommandoschnittstelle.</span></p>
+
+  <div class="detail-list">
+
+    <!-- 1 EQUITY -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/equity</span>
+      <h3><span class="en">Equity Deep-Dive</span><span class="de">Aktien Deep-Dive</span></h3>
+      <div class="db-sub">equity &lt;TICKER&gt; · price · fundamentals · technicals</div>
+      <p><span class="en">Pull a complete equity profile for any stock with a single command. The output covers live price data, key fundamentals (P/E, EV/EBITDA, P/B, dividend yield), 52-week range, analyst targets, earnings date, revenue and EPS growth — all displayed in a structured, scannable panel.</span><span class="de">Erstelle mit einem einzigen Befehl ein vollständiges Aktien-Profil für jede Aktie. Die Ausgabe umfasst Live-Kursdaten, wichtige Fundamentaldaten (KGV, EV/EBITDA, KBV, Dividendenrendite), 52-Wochen-Bereich, Analystenziele, Earnings-Datum sowie Umsatz- und EPS-Wachstum.</span></p>
+      <ul>
+        <li><span class="en">Live bid/ask price and daily change</span><span class="de">Live Bid/Ask-Kurs und Tagesveränderung</span></li>
+        <li><span class="en">Market cap, enterprise value, float</span><span class="de">Marktkapitalisierung, Enterprise Value, Streubesitz</span></li>
+        <li><span class="en">P/E, forward P/E, PEG, P/B, P/S ratios</span><span class="de">KGV, Forward-KGV, PEG, KBV, KUV</span></li>
+        <li><span class="en">Dividend yield, payout ratio</span><span class="de">Dividendenrendite, Ausschüttungsquote</span></li>
+        <li><span class="en">52-week high/low and distance from each</span><span class="de">52-Wochen-Hoch/Tief und Abstand</span></li>
+        <li><span class="en">Analyst consensus and price target range</span><span class="de">Analysten-Konsensus und Kurszielspanne</span></li>
+        <li><span class="en">Next earnings date and EPS estimate</span><span class="de">Nächster Earnings-Termin und EPS-Schätzung</span></li>
+        <li><span class="en">Revenue growth (YoY, QoQ)</span><span class="de">Umsatzwachstum (YoY, QoQ)</span></li>
+      </ul>
+    </div>
+
+    <!-- 2 PRICE / CHART -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/price</span>
+      <h3><span class="en">Price Panels &amp; Charts</span><span class="de">Kurs-Panels &amp; Charts</span></h3>
+      <div class="db-sub">price &lt;TICKER&gt; · chart &lt;TICKER&gt; · compare &lt;T1&gt; &lt;T2&gt;</div>
+      <p><span class="en">Request price panels for any equity, ETF, index, or crypto. Compare up to four tickers side-by-side — see daily returns, cumulative performance over selectable periods (1D, 5D, 1M, 3M, 6M, 1Y, 3Y, 5Y), and volume. Supports all major international exchanges.</span><span class="de">Kurs-Panels für jede Aktie, ETF, Index oder Krypto abrufen. Bis zu vier Ticker nebeneinander vergleichen — Tagesrenditen, kumulative Performance über wählbare Zeiträume (1D, 5D, 1M, 3M, 6M, 1Y, 3Y, 5Y) und Volumen einsehen.</span></p>
+      <ul>
+        <li><span class="en">Intraday prices (live refresh)</span><span class="de">Intraday-Kurse (Live-Aktualisierung)</span></li>
+        <li><span class="en">OHLCV data for any time period</span><span class="de">OHLCV-Daten für beliebige Zeiträume</span></li>
+        <li><span class="en">Multi-ticker comparison (up to 4)</span><span class="de">Multi-Ticker-Vergleich (bis zu 4)</span></li>
+        <li><span class="en">Cumulative return chart overlay</span><span class="de">Kumulierter Rendite-Chart-Overlay</span></li>
+        <li><span class="en">Volume bars and average volume</span><span class="de">Volumensbalken und Durchschnittsvolumen</span></li>
+        <li><span class="en">International exchanges: LSE, Euronext, Xetra, TSX</span><span class="de">Internationale Börsen: LSE, Euronext, Xetra, TSX</span></li>
+      </ul>
+    </div>
+
+    <!-- 3 TECHNICALS -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/technicals</span>
+      <h3><span class="en">Technical Analysis</span><span class="de">Technische Analyse</span></h3>
+      <div class="db-sub">ta &lt;TICKER&gt; · rsi · macd · bb · sma · ema</div>
+      <p><span class="en">Run a full suite of technical indicators on any ticker directly from the terminal. RSI, MACD, Bollinger Bands, moving averages (SMA/EMA), ATR, and more — displayed as structured signal panels. Signals are classified as bullish, bearish, or neutral based on standard thresholds.</span><span class="de">Eine vollständige Suite technischer Indikatoren für jeden Ticker direkt aus dem Terminal. RSI, MACD, Bollinger Bänder, gleitende Durchschnitte (SMA/EMA), ATR und mehr — als strukturierte Signal-Panels angezeigt.</span></p>
+      <ul>
+        <li><span class="en">RSI (14) with overbought/oversold signal</span><span class="de">RSI (14) mit Überkauft/Überverkauft-Signal</span></li>
+        <li><span class="en">MACD with signal line crossover detection</span><span class="de">MACD mit Signal-Linie-Crossover-Erkennung</span></li>
+        <li><span class="en">Bollinger Bands — band squeeze detection</span><span class="de">Bollinger Bänder — Band-Squeeze-Erkennung</span></li>
+        <li><span class="en">SMA 20/50/200 crossover alerts</span><span class="de">SMA 20/50/200 Crossover-Meldungen</span></li>
+        <li><span class="en">EMA 9/21 trend direction</span><span class="de">EMA 9/21 Trendrichtung</span></li>
+        <li><span class="en">ATR (14) for volatility-based position sizing</span><span class="de">ATR (14) für volatilitätsbasiertes Positionsmanagement</span></li>
+        <li><span class="en">ADX trend strength classification</span><span class="de">ADX Trendstärke-Klassifizierung</span></li>
+        <li><span class="en">Stochastic oscillator (fast/slow)</span><span class="de">Stochastischer Oszillator (schnell/langsam)</span></li>
+      </ul>
+    </div>
+
+    <!-- 4 FX -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/fx</span>
+      <h3><span class="en">FX — Foreign Exchange Panel</span><span class="de">FX — Devisenmarkt-Panel</span></h3>
+      <div class="db-sub">fx &lt;BASE&gt; &lt;QUOTE...&gt; · fxall · fxheat</div>
+      <p><span class="en">Live foreign exchange rates for all major and minor currency pairs. The FX panel shows bid/ask spreads, daily change, and year-to-date performance. The heat map view (`fxheat`) shows cross-currency strength at a glance — essential for multi-currency portfolios holding LSE, Euronext, or Xetra positions.</span><span class="de">Live-Devisenkurse für alle wichtigen und kleineren Währungspaare. Das FX-Panel zeigt Bid/Ask-Spreads, Tagesveränderung und YTD-Performance. Die Heatmap-Ansicht zeigt die Währungsstärke auf einen Blick — unverzichtbar für Portfolios mit LSE-, Euronext- oder Xetra-Positionen.</span></p>
+      <ul>
+        <li><span class="en">Live rates: EUR/USD, GBP/USD, USD/JPY, and 30+ pairs</span><span class="de">Live-Kurse: EUR/USD, GBP/USD, USD/JPY und 30+ Paare</span></li>
+        <li><span class="en">Cross-currency strength heat map</span><span class="de">Währungsstärke-Heatmap</span></li>
+        <li><span class="en">Daily, weekly, monthly change per pair</span><span class="de">Tägliche, wöchentliche, monatliche Veränderung</span></li>
+        <li><span class="en">Portfolio FX exposure summary</span><span class="de">Portfolio-Währungsexposure-Übersicht</span></li>
+        <li><span class="en">Historical FX charts for any pair</span><span class="de">Historische FX-Charts für jedes Paar</span></li>
+        <li><span class="en">Central bank rate table (Fed, ECB, BoE, BoJ)</span><span class="de">Zentralbank-Zinstabelle (Fed, EZB, BoE, BoJ)</span></li>
+      </ul>
+    </div>
+
+    <!-- 5 MACRO -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/macro</span>
+      <h3><span class="en">Macro Dashboard</span><span class="de">Makro-Dashboard</span></h3>
+      <div class="db-sub">macro · macro us · macro eu · macro rates</div>
+      <p><span class="en">A live macroeconomic dashboard covering the most important indicators for the US, Europe, and global markets. Inflation, interest rates, GDP growth, unemployment, PMI, and yield curves — all updated from official data sources. Filter by region or category to focus on what matters for your portfolio.</span><span class="de">Ein Live-Makro-Dashboard mit den wichtigsten Indikatoren für die USA, Europa und die globalen Märkte. Inflation, Zinsen, BIP-Wachstum, Arbeitslosigkeit, PMI und Zinskurven — alles aus offiziellen Datenquellen aktualisiert.</span></p>
+      <ul>
+        <li><span class="en">CPI, Core CPI, PPI (US &amp; EU)</span><span class="de">VPI, Kern-VPI, PPI (USA &amp; EU)</span></li>
+        <li><span class="en">Fed Funds Rate, ECB Deposit Rate, BoE Base Rate</span><span class="de">Fed Funds Rate, EZB-Einlagenzins, BoE-Basiszins</span></li>
+        <li><span class="en">US 2Y/10Y/30Y yield curve</span><span class="de">US 2J/10J/30J Zinskurve</span></li>
+        <li><span class="en">GDP growth (QoQ, YoY) by region</span><span class="de">BIP-Wachstum (QoQ, YoY) nach Region</span></li>
+        <li><span class="en">Manufacturing &amp; Services PMI</span><span class="de">Industrie &amp; Dienstleistungs-PMI</span></li>
+        <li><span class="en">Unemployment rates: US, EU, UK, DE</span><span class="de">Arbeitslosenquoten: USA, EU, UK, DE</span></li>
+        <li><span class="en">Consumer confidence indices</span><span class="de">Verbrauchervertrauen-Indizes</span></li>
+        <li><span class="en">Trade balance and current account</span><span class="de">Handelsbilanz und Leistungsbilanz</span></li>
+      </ul>
+    </div>
+
+    <!-- 6 INDICES -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/indices</span>
+      <h3><span class="en">Global Indices Panel</span><span class="de">Globale Indizes-Panel</span></h3>
+      <div class="db-sub">indices · index &lt;NAME&gt; · mktsummary</div>
+      <p><span class="en">A live overview of the world's major equity indices. Track the S&P 500, NASDAQ, Dow Jones, DAX, FTSE 100, CAC 40, Nikkei 225, Hang Seng, and more — all on a single screen. The market summary panel (`mktsummary`) shows sector-level performance and breadth statistics for the current session.</span><span class="de">Ein Live-Überblick über die wichtigsten globalen Aktienindizes. S&P 500, NASDAQ, Dow Jones, DAX, FTSE 100, CAC 40, Nikkei 225, Hang Seng und mehr — alles auf einem Bildschirm. Das Marktübersichts-Panel zeigt Sektorperformance und Marktbreite für die aktuelle Sitzung.</span></p>
+      <ul>
+        <li><span class="en">Live index prices and daily change</span><span class="de">Live-Indexkurse und Tagesveränderung</span></li>
+        <li><span class="en">Americas, Europe, Asia-Pacific grouping</span><span class="de">Groupierung nach Amerika, Europa, Asien-Pazifik</span></li>
+        <li><span class="en">YTD performance ranking</span><span class="de">YTD-Performance-Ranking</span></li>
+        <li><span class="en">Sector heatmap (S&P 500 sectors)</span><span class="de">Sektor-Heatmap (S&P 500 Sektoren)</span></li>
+        <li><span class="en">Market breadth: advancers vs decliners</span><span class="de">Marktbreite: Gewinner vs. Verlierer</span></li>
+        <li><span class="en">VIX fear index and term structure</span><span class="de">VIX-Angstindex und Term-Struktur</span></li>
+      </ul>
+    </div>
+
+    <!-- 7 COMMODITIES -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/commodities</span>
+      <h3><span class="en">Commodities &amp; Crypto Panel</span><span class="de">Rohstoffe &amp; Krypto-Panel</span></h3>
+      <div class="db-sub">commodities · crypto · gold · oil</div>
+      <p><span class="en">Track live prices for energy, metals, agricultural commodities, and cryptocurrencies. The commodities panel includes gold, silver, crude oil (WTI &amp; Brent), natural gas, copper, and soft commodities. The crypto panel covers Bitcoin, Ethereum, and major altcoins with market cap rankings.</span><span class="de">Live-Kurse für Energie, Metalle, Agrargüter und Kryptowährungen. Das Rohstoff-Panel umfasst Gold, Silber, Rohöl (WTI &amp; Brent), Erdgas, Kupfer und weiche Rohstoffe. Das Krypto-Panel zeigt Bitcoin, Ethereum und wichtige Altcoins mit Marktkapitalisierungs-Ranking.</span></p>
+      <ul>
+        <li><span class="en">Gold, Silver, Platinum spot prices</span><span class="de">Gold, Silber, Platin Spot-Preise</span></li>
+        <li><span class="en">WTI Crude, Brent Crude, Natural Gas</span><span class="de">WTI-Rohöl, Brent-Rohöl, Erdgas</span></li>
+        <li><span class="en">Copper, Aluminium, Iron Ore</span><span class="de">Kupfer, Aluminium, Eisenerz</span></li>
+        <li><span class="en">BTC, ETH, and top 20 crypto by market cap</span><span class="de">BTC, ETH und Top-20-Krypto nach Marktkapitalisierung</span></li>
+        <li><span class="en">Commodity futures term structure</span><span class="de">Rohstoff-Futures Term-Struktur (Contango/Backwardation)</span></li>
+        <li><span class="en">Daily, weekly, YTD performance table</span><span class="de">Tägliche, wöchentliche, YTD-Performance-Tabelle</span></li>
+      </ul>
+    </div>
+
+    <!-- 8 BONDS / RATES -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/rates</span>
+      <h3><span class="en">Bonds &amp; Rates</span><span class="de">Anleihen &amp; Zinsen</span></h3>
+      <div class="db-sub">rates · bonds · yieldcurve · spread</div>
+      <p><span class="en">A live fixed-income panel covering global government bond yields, central bank policy rates, and credit spreads. Visualise the US yield curve from 3-month to 30-year, track inversion signals, monitor IG and HY corporate spreads, and compare real yields across markets.</span><span class="de">Ein Live-Festzins-Panel mit globalen Staatsanleiherenditen, Zentralbank-Leitzinsen und Credit Spreads. US-Zinskurve von 3 Monaten bis 30 Jahren visualisieren, Inversions-Signale verfolgen, IG- und HY-Unternehmens-Spreads überwachen und reale Renditen vergleichen.</span></p>
+      <ul>
+        <li><span class="en">US Treasury: 3M, 2Y, 5Y, 10Y, 30Y yields</span><span class="de">US-Treasuries: 3M, 2J, 5J, 10J, 30J Renditen</span></li>
+        <li><span class="en">German Bund, UK Gilt, French OAT, Italian BTP</span><span class="de">Bundesanleihe, Gilt, OAT, BTP Renditen</span></li>
+        <li><span class="en">Yield curve shape and inversion alert</span><span class="de">Zinskurvenform und Inversions-Alarm</span></li>
+        <li><span class="en">Investment Grade / High Yield spread (OAS)</span><span class="de">Investment Grade / High Yield Spread (OAS)</span></li>
+        <li><span class="en">Real yield (nominal minus inflation breakeven)</span><span class="de">Realrendite (nominal minus Inflations-Breakeven)</span></li>
+        <li><span class="en">Central bank rate history chart</span><span class="de">Zentralbank-Zinsverlauf-Chart</span></li>
+      </ul>
+    </div>
+
+    <!-- 9 NEWS -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/news</span>
+      <h3><span class="en">News &amp; Headlines</span><span class="de">Nachrichten &amp; Schlagzeilen</span></h3>
+      <div class="db-sub">news &lt;TICKER&gt; · headlines · topstories</div>
+      <p><span class="en">Pull the latest news for any ticker or a live global headlines feed. Stories are fetched from multiple financial RSS sources, ranked by recency, and deduplicated. Use `topstories` for the most important macro and equity stories of the day, or `news AAPL` for company-specific headlines.</span><span class="de">Aktuelle Nachrichten für jeden Ticker oder einen Live-Globalnachrichtenfeed abrufen. Meldungen werden aus mehreren Finanz-RSS-Quellen abgerufen, nach Aktualität sortiert und dedupliziert.</span></p>
+      <ul>
+        <li><span class="en">Per-ticker news feed (last 20 stories)</span><span class="de">Ticker-spezifischer Nachrichtenfeed (letzte 20 Meldungen)</span></li>
+        <li><span class="en">Global headlines: macro, equities, FX, commodities</span><span class="de">Globale Schlagzeilen: Makro, Aktien, FX, Rohstoffe</span></li>
+        <li><span class="en">Timestamps and source attribution</span><span class="de">Zeitstempel und Quellenangabe</span></li>
+        <li><span class="en">Automatic deduplication across sources</span><span class="de">Automatische Deduplizierung über Quellen hinweg</span></li>
+        <li><span class="en">Clickable links to full articles</span><span class="de">Klickbare Links zu vollständigen Artikeln</span></li>
+        <li><span class="en">Earnings-related news detection</span><span class="de">Erkennung von Earnings-relevanten Nachrichten</span></li>
+      </ul>
+    </div>
+
+    <!-- 10 PORTFOLIO VIEW -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/portfolio</span>
+      <h3><span class="en">Portfolio View</span><span class="de">Portfolio-Ansicht</span></h3>
+      <div class="db-sub">portfolio · pnl · weights · exposure</div>
+      <p><span class="en">Access your live portfolio directly inside the terminal. The `portfolio` command renders your current positions with live prices, P&amp;L, and weights in a clean table. `pnl` breaks down unrealised and realised gains. `exposure` shows sector, country, and currency breakdown — all in terminal output format.</span><span class="de">Greife direkt im Terminal auf dein Live-Portfolio zu. Der `portfolio`-Befehl zeigt deine aktuellen Positionen mit Live-Kursen, P&amp;L und Gewichten in einer sauberen Tabelle. `pnl` schlüsselt unrealisierte und realisierte Gewinne auf.</span></p>
+      <ul>
+        <li><span class="en">Live positions table with P&amp;L per holding</span><span class="de">Live-Positionstabelle mit P&amp;L pro Position</span></li>
+        <li><span class="en">Total portfolio value and daily change</span><span class="de">Gesamtportfoliowert und Tagesveränderung</span></li>
+        <li><span class="en">Sector and country allocation breakdown</span><span class="de">Sektor- und Länderallokations-Aufschlüsselung</span></li>
+        <li><span class="en">Currency exposure (USD, EUR, GBP, etc.)</span><span class="de">Währungsexposure (USD, EUR, GBP, etc.)</span></li>
+        <li><span class="en">Top gainers and top losers today</span><span class="de">Größte Gewinner und Verlierer heute</span></li>
+        <li><span class="en">Realised vs unrealised P&amp;L split</span><span class="de">Realisierter vs. unrealisierter P&amp;L</span></li>
+      </ul>
+    </div>
+
+    <!-- 11 FMOD / RV -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/fmod</span>
+      <h3><span class="en">Factor Model (FMOD)</span><span class="de">Faktormodell (FMOD)</span></h3>
+      <div class="db-sub">fmod &lt;TICKER&gt; · rv &lt;TICKER&gt; · factorload</div>
+      <p><span class="en">Run a factor model decomposition on any stock or your entire portfolio directly from the terminal. FMOD breaks down returns into Value, Momentum, Quality, Low-Vol, and Size factor exposures. The `rv` command calculates realised volatility over multiple windows and compares it to implied volatility where available.</span><span class="de">Faktormodell-Zerlegung für jede Aktie oder das gesamte Portfolio direkt aus dem Terminal. FMOD zerlegt Renditen in Value-, Momentum-, Quality-, Low-Vol- und Size-Faktorexpositionen. Der `rv`-Befehl berechnet die realisierte Volatilität über mehrere Fenster.</span></p>
+      <ul>
+        <li><span class="en">5-factor model decomposition (Fama-French + Mom)</span><span class="de">5-Faktor-Zerlegung (Fama-French + Momentum)</span></li>
+        <li><span class="en">Factor loading scores with Z-score display</span><span class="de">Faktorladungs-Scores mit Z-Score-Anzeige</span></li>
+        <li><span class="en">Realised volatility: 10D, 20D, 30D, 60D windows</span><span class="de">Realisierte Volatilität: 10T, 20T, 30T, 60T Fenster</span></li>
+        <li><span class="en">IV vs. RV spread (where options data available)</span><span class="de">IV vs. RV Spread (wo Optionsdaten verfügbar)</span></li>
+        <li><span class="en">Portfolio-level factor exposure report</span><span class="de">Faktorexposure-Bericht auf Portfolio-Ebene</span></li>
+        <li><span class="en">Rolling factor betas over time</span><span class="de">Rollierende Faktor-Betas über die Zeit</span></li>
+      </ul>
+    </div>
+
+    <!-- 12 COMMANDS REFERENCE -->
+    <div class="detail-block">
+      <span class="db-tag">terminal/commands</span>
+      <h3><span class="en">Full Command Reference</span><span class="de">Vollständige Befehlsreferenz</span></h3>
+      <div class="db-sub">help · help &lt;COMMAND&gt; · commands</div>
+      <p><span class="en">Every terminal command is documented in-line. Type `help` for the complete command list, or `help equity` for detailed usage of a specific command. Below is the full command reference organised by category.</span><span class="de">Jeder Terminal-Befehl ist inline dokumentiert. Tippe `help` für die vollständige Befehlsliste oder `help equity` für die detaillierte Nutzung eines bestimmten Befehls.</span></p>
+
+      <div class="cmd-block">
+        <div class="cmd-section-label"><span class="en">Equity &amp; Price</span><span class="de">Aktien &amp; Kurs</span></div>
+        <table class="cmd-table">
+          <tr><th><span class="en">Command</span><span class="de">Befehl</span></th><th><span class="en">Arguments</span><span class="de">Argumente</span></th><th><span class="en">Description</span><span class="de">Beschreibung</span></th></tr>
+          <tr><td>equity</td><td>&lt;TICKER&gt;</td><td><span class="en">Full equity profile with fundamentals</span><span class="de">Vollständiges Aktien-Profil mit Fundamentaldaten</span></td></tr>
+          <tr><td>price</td><td>&lt;TICKER&gt;</td><td><span class="en">Live price panel with daily stats</span><span class="de">Live-Kurs-Panel mit Tagesstatistiken</span></td></tr>
+          <tr><td>chart</td><td>&lt;TICKER&gt; [period]</td><td><span class="en">ASCII-style price chart</span><span class="de">ASCII-Kurs-Chart</span></td></tr>
+          <tr><td>compare</td><td>&lt;T1&gt; &lt;T2&gt; [T3] [T4]</td><td><span class="en">Side-by-side performance comparison</span><span class="de">Nebeneinander-Performance-Vergleich</span></td></tr>
+          <tr><td>ta</td><td>&lt;TICKER&gt;</td><td><span class="en">Full technical analysis panel</span><span class="de">Vollständiges technisches Analyse-Panel</span></td></tr>
+          <tr><td>news</td><td>&lt;TICKER&gt;</td><td><span class="en">Latest news for a ticker</span><span class="de">Aktuelle Nachrichten für einen Ticker</span></td></tr>
+        </table>
+
+        <div class="cmd-section-label"><span class="en">FX &amp; Rates</span><span class="de">Devisen &amp; Zinsen</span></div>
+        <table class="cmd-table">
+          <tr><td>fx</td><td>&lt;BASE&gt; [QUOTE...]</td><td><span class="en">Live FX rates for currency pairs</span><span class="de">Live-Devisenkurse für Währungspaare</span></td></tr>
+          <tr><td>fxall</td><td>—</td><td><span class="en">Full major/minor pair overview</span><span class="de">Vollständiger Major/Minor-Paar-Überblick</span></td></tr>
+          <tr><td>fxheat</td><td>—</td><td><span class="en">Cross-currency strength heat map</span><span class="de">Währungsstärke-Heatmap</span></td></tr>
+          <tr><td>rates</td><td>[region]</td><td><span class="en">Central bank rates table</span><span class="de">Zentralbank-Zinsen-Tabelle</span></td></tr>
+          <tr><td>yieldcurve</td><td>[us/de/gb]</td><td><span class="en">Government yield curve</span><span class="de">Staatliche Zinskurve</span></td></tr>
+          <tr><td>spread</td><td>[ig/hy]</td><td><span class="en">Credit spread monitor</span><span class="de">Credit-Spread-Monitor</span></td></tr>
+        </table>
+
+        <div class="cmd-section-label"><span class="en">Macro &amp; Markets</span><span class="de">Makro &amp; Märkte</span></div>
+        <table class="cmd-table">
+          <tr><td>macro</td><td>[us/eu/global]</td><td><span class="en">Macroeconomic indicators dashboard</span><span class="de">Makroökonomisches Indikatoren-Dashboard</span></td></tr>
+          <tr><td>indices</td><td>—</td><td><span class="en">Global equity indices overview</span><span class="de">Globale Aktienindizes-Übersicht</span></td></tr>
+          <tr><td>mktsummary</td><td>—</td><td><span class="en">Market session summary and breadth</span><span class="de">Marktsitzungs-Zusammenfassung und Breite</span></td></tr>
+          <tr><td>commodities</td><td>—</td><td><span class="en">Energy, metals, agricultural prices</span><span class="de">Energie, Metalle, Agrarpreise</span></td></tr>
+          <tr><td>crypto</td><td>—</td><td><span class="en">Top 20 crypto by market cap</span><span class="de">Top-20-Krypto nach Marktkapitalisierung</span></td></tr>
+          <tr><td>headlines</td><td>—</td><td><span class="en">Global financial news headlines</span><span class="de">Globale Finanz-Schlagzeilen</span></td></tr>
+        </table>
+
+        <div class="cmd-section-label"><span class="en">Portfolio &amp; Quant</span><span class="de">Portfolio &amp; Quant</span></div>
+        <table class="cmd-table">
+          <tr><td>portfolio</td><td>—</td><td><span class="en">Live portfolio positions and P&amp;L</span><span class="de">Live-Portfolio-Positionen und P&amp;L</span></td></tr>
+          <tr><td>pnl</td><td>—</td><td><span class="en">Realised and unrealised gain breakdown</span><span class="de">Realisierter und unrealisierter Gewinn</span></td></tr>
+          <tr><td>exposure</td><td>—</td><td><span class="en">Sector, country, currency breakdown</span><span class="de">Sektor-, Länder-, Währungsaufschlüsselung</span></td></tr>
+          <tr><td>fmod</td><td>&lt;TICKER&gt;</td><td><span class="en">Factor model decomposition</span><span class="de">Faktormodell-Zerlegung</span></td></tr>
+          <tr><td>rv</td><td>&lt;TICKER&gt;</td><td><span class="en">Realised volatility across windows</span><span class="de">Realisierte Volatilität über Zeitfenster</span></td></tr>
+          <tr><td>factorload</td><td>—</td><td><span class="en">Portfolio factor loading summary</span><span class="de">Portfolio-Faktorladungs-Zusammenfassung</span></td></tr>
+        </table>
+
+        <div class="cmd-section-label"><span class="en">Utility</span><span class="de">Dienstprogramme</span></div>
+        <table class="cmd-table">
+          <tr><td>help</td><td>[command]</td><td><span class="en">Command reference (all or specific)</span><span class="de">Befehlsreferenz (alle oder spezifisch)</span></td></tr>
+          <tr><td>clear</td><td>—</td><td><span class="en">Clear terminal output</span><span class="de">Terminal-Ausgabe löschen</span></td></tr>
+          <tr><td>theme</td><td>[dark/light]</td><td><span class="en">Switch terminal colour theme</span><span class="de">Terminal-Farbthema wechseln</span></td></tr>
+          <tr><td>export</td><td>[csv/json]</td><td><span class="en">Export last command output</span><span class="de">Letzte Befehlsausgabe exportieren</span></td></tr>
+          <tr><td>history</td><td>—</td><td><span class="en">Show command history</span><span class="de">Befehlsverlauf anzeigen</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /detail-list -->
+</div>
+
+<div class="sep"></div>
+
+<div class="section">
+  <div class="cta-banner">
+    <h2><span class="en">Ready to try the Terminal?</span><span class="de">Bereit, das Terminal auszuprobieren?</span></h2>
+    <p><span class="en">The QuantPro Terminal is included in every plan. Start free and get access to real-time market data, macro panels, and your full portfolio — right from the command line.</span><span class="de">Das QuantPro Terminal ist in jedem Plan enthalten. Starte kostenlos und erhalte Zugang zu Echtzeit-Marktdaten, Makro-Panels und deinem vollständigen Portfolio — direkt aus der Kommandozeile.</span></p>
+    <a href="https://www.quantpro.de/register" class="btn-cta" target="_blank"><span class="en">Create Free Account</span><span class="de">Kostenloses Konto erstellen</span></a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo"><span class="bracket">[</span>QUANTPRO<span class="bracket">]</span></div>
+  <div class="footer-links">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+    <a href="https://quantpro.store" target="_blank"><span class="en">Pricing</span><span class="de">Preise</span></a>
+  </div>
+  <div class="footer-copy">© 2026 QuantPro</div>
+</footer>
+
+<script>
+function setLang(l){document.body.classList.toggle('lang-de',l==='de');localStorage.setItem('qp-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}
+function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('qp-theme',t);}
+(function(){const l=localStorage.getItem('qp-lang')||'en';if(l==='de'){document.body.classList.add('lang-de');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}const t=localStorage.getItem('qp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+</body>
+</html>
