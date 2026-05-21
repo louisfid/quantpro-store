@@ -1,420 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>QuantPro — Plans & Pricing</title>
+<title>QuantPro — Institutional-Grade Market Intelligence</title>
+<meta name="description" content="QuantPro is a professional portfolio management and quantitative analysis platform for serious investors.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <style>
-:root {
-  --bg:      #0D1117;
-  --bg2:     #161B22;
-  --bg3:     #21262D;
-  --card:    #161B22;
-  --border:  #21262D;
-  --green:   #3FB950;
-  --green2:  #56D364;
-  --text:    #E6EDF3;
-  --text2:   #8B949E;
-  --dim:     #484F58;
-  --muted:   #21262D;
-  --shadow:  rgba(0,0,0,.6);
-  --pro-glow: rgba(63,185,80,.08);
-}
-[data-theme="light"] {
-  --bg:      #FFFFFF;
-  --bg2:     #F6F8FA;
-  --bg3:     #f0f2f4;
-  --card:    #FFFFFF;
-  --border:  #D0D7DE;
-  --text:    #1F2328;
-  --text2:   #656D76;
-  --dim:     #6E7781;
-  --muted:   #F0F2F4;
-  --shadow:  rgba(0,0,0,.12);
-  --pro-glow: rgba(63,185,80,.06);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{font-size:14px;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;line-height:1.55;transition:background .25s,color .25s}
-a{color:inherit;text-decoration:none}
-
-/* NAV */
-.nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;backdrop-filter:blur(12px)}
-.nav-logo{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;letter-spacing:-.02em;text-decoration:none}
-.nav-logo .bracket{color:var(--green);font-size:1.1em}
-.nav-logo .logo-text{background:linear-gradient(135deg,var(--green),#56D364);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;align-items:center;gap:24px;font-size:13px;color:var(--text2)}
-.nav-links a:hover{color:var(--text);transition:color .15s}
-.nav-actions{display:flex;align-items:center;gap:12px}
-.btn-theme{background:none;border:1px solid var(--border);color:var(--text2);padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px;transition:all .15s}
-.btn-theme:hover{border-color:var(--green);color:var(--green)}
-.btn-login{background:none;border:1px solid var(--border);color:var(--text);padding:7px 16px;border-radius:6px;font-size:13px;font-weight:500;transition:all .15s;cursor:pointer}
-.btn-login:hover{border-color:var(--green);color:var(--green)}
-
-/* HERO */
-.hero{text-align:center;padding:72px 24px 48px}
-.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--green);text-transform:uppercase;margin-bottom:16px}
-.hero h1{font-size:42px;font-weight:700;letter-spacing:-.02em;margin-bottom:16px;line-height:1.2}
-.hero h1 span{color:var(--green)}
-.hero p{font-size:16px;color:var(--text2);max-width:480px;margin:0 auto 40px}
-
-/* BILLING TOGGLE */
-.billing-toggle{display:inline-flex;align-items:center;background:var(--muted);border:1px solid var(--border);border-radius:8px;padding:4px;gap:4px;margin-bottom:48px;position:relative}
-.toggle-btn{padding:8px 24px;border-radius:6px;border:none;background:none;color:var(--dim);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
-.toggle-btn.active{background:var(--card);color:var(--text);box-shadow:0 1px 4px var(--shadow)}
-.save-badge{position:absolute;top:-10px;right:-4px;background:var(--green);color:#000;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:.04em}
-
-/* PLANS GRID */
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px;margin:0 auto;padding:0 24px 80px}
-@media(max-width:680px){.plans{grid-template-columns:1fr}}
-
-.plan-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,box-shadow .2s}
-.plan-card.pro{border-color:var(--green);box-shadow:0 0 0 1px var(--green), 0 8px 40px var(--pro-glow)}
-.plan-card.pro .plan-header{background:linear-gradient(135deg,rgba(63,185,80,.08) 0%,transparent 60%)}
-
-.plan-header{padding:28px 28px 24px}
-.plan-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:12px}
-.plan-badge.free-badge{background:var(--muted);color:var(--dim)}
-.plan-badge.pro-badge{background:rgba(63,185,80,.15);color:var(--green)}
-.plan-name{font-size:22px;font-weight:700;margin-bottom:4px}
-.plan-desc{font-size:13px;color:var(--text2);margin-bottom:20px}
-.plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
-.plan-price .amount{font-size:38px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:-.02em}
-.plan-price .currency{font-size:18px;font-weight:600;color:var(--text2);align-self:flex-start;margin-top:6px}
-.plan-price .period{font-size:13px;color:var(--dim)}
-.plan-price-sub{font-size:12px;color:var(--dim);margin-bottom:24px;min-height:18px}
-.plan-price-sub .annual-note{color:var(--green)}
-
-.plan-cta{display:block;width:100%;padding:13px;border-radius:8px;font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;border:none;letter-spacing:.02em}
-.cta-free{background:var(--muted);color:var(--text);border:1px solid var(--border)}
-.cta-free:hover{border-color:var(--green);color:var(--green)}
-.cta-pro{background:var(--green);color:#000}
-.cta-pro:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(63,185,80,.3)}
-.trial-note{text-align:center;font-size:11px;color:var(--dim);margin-top:10px}
-.trial-note span{color:var(--green)}
-
-/* FEATURES */
-.plan-features{padding:0 28px 28px;flex:1}
-.features-divider{height:1px;background:var(--border);margin-bottom:20px}
-.features-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
-.feature-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px;font-size:13px}
-.feature-row .icon{width:16px;height:16px;flex-shrink:0;margin-top:1px}
-.icon-check{color:var(--green)}
-.icon-lock{color:var(--muted);filter:brightness(1.5)}
-.feature-text{color:var(--text2);line-height:1.4}
-.feature-text.locked{color:var(--dim)}
-.feature-text .tag{font-size:10px;font-weight:600;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle}
-.tag-pro{background:rgba(63,185,80,.15);color:var(--green)}
-
-/* COMPARISON TABLE */
-.comparison{max-width:860px;margin:0 auto;padding:0 24px 80px}
-.section-title{text-align:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:32px}
-.comp-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.comp-table thead tr{background:var(--bg3);border-bottom:1px solid var(--border)}
-.comp-table th{padding:16px 20px;text-align:left;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
-.comp-table th:not(:first-child){text-align:center}
-.comp-table td{padding:13px 20px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2)}
-.comp-table tr:last-child td{border-bottom:none}
-.comp-table td:not(:first-child){text-align:center}
-.comp-table tr:hover td{background:rgba(255,255,255,.02)}
-.comp-check{color:var(--green);font-size:16px}
-.comp-cross{color:var(--muted);filter:brightness(2);font-size:16px}
-.comp-cat{padding:10px 20px 6px;background:var(--bg3);border-bottom:1px solid var(--border)}
-.comp-cat td{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:10px 20px 6px}
-.col-pro{background:rgba(63,185,80,.03)}
-
-/* FAQ */
-.faq{max-width:680px;margin:0 auto;padding:0 24px 80px}
-.faq-title{text-align:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:32px}
-.faq-item{border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden}
-.faq-q{padding:16px 20px;font-size:14px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
-.faq-q:hover{background:var(--bg3)}
-.faq-q .arrow{color:var(--dim);font-size:12px;transition:transform .2s}
-.faq-item.open .faq-q .arrow{transform:rotate(90deg)}
-.faq-a{font-size:13px;color:var(--text2);line-height:1.7;padding:0 20px;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s}
-.faq-item.open .faq-a{max-height:200px;padding:0 20px 16px}
-
-/* FOOTER */
-.footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--dim);font-size:12px}
-.footer a{color:var(--dim);text-decoration:underline}
-.footer a:hover{color:var(--green)}
-
-/* HIDDEN MONTHLY/ANNUAL */
-.annual-hidden{display:none}
-.annual .annual-hidden{display:inline}
-.annual .monthly-only{display:none}
+.hero{padding:96px 24px 64px}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:36px}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.ov-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;transition:all .2s;display:block}
+.ov-card:hover{border-color:var(--green);box-shadow:0 0 0 1px rgba(63,185,80,.12),0 8px 32px var(--glow);transform:translateY(-2px)}
+.ov-card-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.ov-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.ov-card p{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:18px}
+.ov-card .items{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.ov-card .item-tag{font-size:11px;padding:3px 8px;border-radius:4px;background:var(--muted);color:var(--text2);border:1px solid var(--border)}
+.ov-card .arrow{font-size:12px;color:var(--green);font-weight:600}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:860px;margin:0 auto 64px}
+.stat-cell{background:var(--card);padding:28px 24px;text-align:center}
+.stat-num{font-size:32px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--green);letter-spacing:-.02em}
+.stat-label{font-size:12px;color:var(--text2);margin-top:6px}
+@media(max-width:680px){.stat-row{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <a href="https://www.quantpro.info" class="nav-logo">
-    <span class="bracket">[</span><span class="logo-text">QuantPro</span><span class="bracket">]</span>
-  </a>
+  <a href="index.html" class="nav-logo"><span class="bracket">[</span><span class="logo-text">QUANTPRO</span><span class="bracket">]</span></a>
   <div class="nav-links">
-    <a href="https://www.quantpro.info">Overview</a>
-    <a href="https://quantpro.store" style="color:var(--green)">Pricing</a>
-    <a href="https://www.quantpro.de/login">Terminal</a>
+    <a href="portfolio.html"><span class="en">Portfolio</span><span class="de">Portfolio</span></a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
   </div>
   <div class="nav-actions">
-    <button class="btn-theme" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
-    <a href="https://www.quantpro.de/login" class="btn-login">Log in</a>
+    <button class="btn-sm lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="btn-sm lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+    <button class="btn-sm" onclick="toggleTheme()"><span class="en">Theme</span><span class="de">Design</span></button>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">Simple Pricing</div>
-  <h1>Plans that grow<br>with your <span>portfolio</span></h1>
-  <p>Start free — upgrade when you need institutional-grade analytics.</p>
-
-  <div class="billing-toggle" id="billingToggle">
-    <button class="toggle-btn active" id="btnMonthly" onclick="setBilling('monthly')">Monthly</button>
-    <button class="toggle-btn" id="btnAnnual" onclick="setBilling('annual')">Annual</button>
-    <span class="save-badge">SAVE 20%</span>
+  <div class="eyebrow"><span class="en">The Complete Investment Platform</span><span class="de">Die komplette Investment-Plattform</span></div>
+  <h1><span class="en">Institutional-Grade<br><em>Market Intelligence</em></span><span class="de">Institutionelle<br><em>Marktintelligenz</em></span></h1>
+  <p><span class="en">QuantPro gives you the tools used by professional portfolio managers — portfolio analytics, quantitative research, AI-powered insights, and a Bloomberg-style terminal. Built for serious investors.</span><span class="de">QuantPro gibt dir die Werkzeuge professioneller Portfoliomanager — Portfolio-Analytics, quantitative Forschung, KI-gestützte Einblicke und ein Bloomberg-ähnliches Terminal. Für ernsthafte Investoren.</span></p>
+  <div class="hero-actions">
+    <a href="portfolio.html" class="btn-sm btn-primary"><span class="en">Explore Features</span><span class="de">Funktionen entdecken</span></a>
+    <a href="https://www.quantpro.de" class="btn-sm" target="_blank"><span class="en">View App Preview</span><span class="de">App-Vorschau</span></a>
   </div>
 </div>
 
-<div class="plans" id="plansGrid">
-
-  <!-- FREE -->
-  <div class="plan-card">
-    <div class="plan-header">
-      <div class="plan-badge free-badge">Free</div>
-      <div class="plan-name">Starter</div>
-      <div class="plan-desc">Core portfolio tools, no commitment</div>
-      <div class="plan-price">
-        <span class="currency">€</span>
-        <span class="amount">0</span>
-        <span class="period">/ month</span>
-      </div>
-      <div class="plan-price-sub">Free forever</div>
-      <a href="https://www.quantpro.de/register" class="plan-cta cta-free">Get started free</a>
+<!-- APP MOCKUP -->
+<div class="mockup-wrap">
+  <div class="mockup">
+    <div class="mockup-bar">
+      <div class="mockup-dot r"></div><div class="mockup-dot y"></div><div class="mockup-dot g"></div>
+      <div class="mockup-url">www.quantpro.de — Dashboard</div>
     </div>
-    <div class="plan-features">
-      <div class="features-divider"></div>
-      <div class="features-label">What's included</div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Dashboard</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Depot — Portfolio management</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Analyse — Portfolio analysis</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Schnellanalyse — Quick analysis</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Settings — Theme &amp; account</span>
-      </div>
-      <div class="feature-row" style="margin-top:4px">
-        <svg class="icon" viewBox="0 0 16 16" fill="none" style="color:var(--border)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 11v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="feature-text locked">Terminal &amp; Live Data<span class="tag tag-pro">PRO</span></span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon" viewBox="0 0 16 16" fill="none" style="color:var(--border)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 11v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="feature-text locked">Forecast &amp; Monte Carlo<span class="tag tag-pro">PRO</span></span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon" viewBox="0 0 16 16" fill="none" style="color:var(--border)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3M8 11v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="feature-text locked">Screening, Alerts, News, AI &amp; more<span class="tag tag-pro">PRO</span></span>
+    <div class="mockup-body">
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Portfolio Value</span><span class="de">Portfoliowert</span></div><div class="mock-stat-value">$124,842</div><div class="mock-stat-change up">▲ +$1,204 today</div></div>
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Total P&L</span><span class="de">Gesamt P&L</span></div><div class="mock-stat-value">+$18,394</div><div class="mock-stat-change up">▲ +17.3%</div></div>
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Today</span><span class="de">Heute</span></div><div class="mock-stat-value">+$1,204</div><div class="mock-stat-change up">▲ +0.97%</div></div>
+      <div class="mock-stat"><div class="mock-stat-label"><span class="en">Positions</span><span class="de">Positionen</span></div><div class="mock-stat-value">19</div><div class="mock-stat-change col-d">Live Prices</div></div>
+      <div class="mock-table">
+        <div class="mock-row hdr"><span>Symbol</span><span>Price</span><span>Today</span><span>P&L</span><span>Weight</span></div>
+        <div class="mock-row"><span>AAPL</span><span>$189.42</span><span class="col-g">+1.2%</span><span class="col-g">+$2,841</span><span class="col-d">8.4%</span></div>
+        <div class="mock-row"><span>MSFT</span><span>$412.80</span><span class="col-g">+0.8%</span><span class="col-g">+$1,920</span><span class="col-d">11.2%</span></div>
+        <div class="mock-row"><span>VUAA.PA</span><span>€94.12</span><span class="col-r">−0.3%</span><span class="col-g">+$4,100</span><span class="col-d">14.8%</span></div>
+        <div class="mock-row"><span>GLDA.L</span><span>£134.50</span><span class="col-g">+0.5%</span><span class="col-g">+$890</span><span class="col-d">6.1%</span></div>
       </div>
     </div>
   </div>
-
-  <!-- PRO -->
-  <div class="plan-card pro">
-    <div class="plan-header">
-      <div class="plan-badge pro-badge">Pro</div>
-      <div class="plan-name">Professional</div>
-      <div class="plan-desc">Full institutional-grade platform</div>
-      <div class="plan-price">
-        <span class="currency">€</span>
-        <span class="amount" id="proPrice">10</span>
-        <span class="period">/ month</span>
-      </div>
-      <div class="plan-price-sub" id="proPriceSub">&nbsp;</div>
-      <a href="#" class="plan-cta cta-pro" id="proCtaBtn" onclick="startTrial(event)">Start 1-month free trial</a>
-      <div class="trial-note">Then <span id="trialAfter">€10/month</span> · Cancel anytime</div>
-    </div>
-    <div class="plan-features">
-      <div class="features-divider"></div>
-      <div class="features-label">Everything in Free, plus</div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text"><strong>Terminal</strong> — 50+ live mnemonics &amp; market data</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Global Screener — 1,255+ stocks, 13 markets</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Quant Lab — ML Signals, Factor Analysis, Pairs Trading</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">AI Review, Investment Case &amp; Peer Comparison</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">DCF Calculator, Options Advisor &amp; Sector Rotation</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">PDF Export, Alerts &amp; API Access</span>
-      </div>
-      <div class="feature-row">
-        <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Priority support &amp; early access to new features</span>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-<!-- COMPARISON TABLE -->
-<div class="comparison">
-  <div class="section-title">Full Feature Comparison</div>
-  <table class="comp-table">
-    <thead>
-      <tr>
-        <th style="width:55%">Feature</th>
-        <th style="width:22.5%">Starter</th>
-        <th style="width:22.5%" class="col-pro">Pro</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="comp-cat"><td colspan="3">Core</td></tr>
-      <tr><td>Dashboard</td><td><span class="comp-check">✓</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Depot — Portfolio management</td><td><span class="comp-check">✓</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Analyse — Multi-factor portfolio analysis</td><td><span class="comp-check">✓</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Schnellanalyse — Instant single-stock analysis</td><td><span class="comp-check">✓</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Settings, dark/light mode</td><td><span class="comp-check">✓</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr class="comp-cat"><td colspan="3">Terminal &amp; Market Data</td></tr>
-      <tr><td>Terminal — 50+ live mnemonics &amp; market data</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Global Screener — 1,255+ stocks, 13 markets</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Sector Rotation — 11 SPDR ETFs vs SPY</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Price Alerts &amp; Email Notifications</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>News Intelligence &amp; Sentiment</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Forecast &amp; Monte Carlo simulation</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr class="comp-cat"><td colspan="3">Research &amp; Valuation</td></tr>
-      <tr><td>DCF Calculator — auto-prefill from live data</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Investment Case Builder — thesis &amp; targets</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Peer Comparison — radar chart, 8 metrics</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>AI Review — GPT-powered research brief</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Options Advisor — covered calls &amp; CSPs</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr class="comp-cat"><td colspan="3">Quant Lab</td></tr>
-      <tr><td>ML Signals — buy/sell with confidence scores</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Factor Analysis — Fama-French 5-factor</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Regime Detection — Hidden Markov Model</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Pairs Trading — cointegration &amp; Z-score</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Portfolio Construction — mean-variance optimisation</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Efficient Frontier &amp; Kelly Criterion</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr class="comp-cat"><td colspan="3">Portfolio Advanced</td></tr>
-      <tr><td>ESG Scoring &amp; Overlap Analysis</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Drawdown &amp; Tracking Error analytics</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>PDF Report Export</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Multi-language (DE / EN)</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>API Access (/api/v1)</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-    </tbody>
-  </table>
+<!-- STATS -->
+<div class="section" style="padding-top:0">
+  <div class="stat-row">
+    <div class="stat-cell"><div class="stat-num">19+</div><div class="stat-label"><span class="en">Portfolio Tools</span><span class="de">Portfolio-Tools</span></div></div>
+    <div class="stat-cell"><div class="stat-num">24</div><div class="stat-label"><span class="en">Analysis Factors</span><span class="de">Analyse-Faktoren</span></div></div>
+    <div class="stat-cell"><div class="stat-num">100+</div><div class="stat-label"><span class="en">Screener Filters</span><span class="de">Screener-Filter</span></div></div>
+    <div class="stat-cell"><div class="stat-num">∞</div><div class="stat-label"><span class="en">Terminal Commands</span><span class="de">Terminal-Befehle</span></div></div>
+  </div>
 </div>
 
-<!-- FAQ -->
-<div class="faq">
-  <div class="faq-title">Frequently Asked Questions</div>
+<!-- FEATURE OVERVIEW -->
+<div class="section" style="padding-top:0">
+  <div class="section-eyebrow"><span class="en">Platform Modules</span><span class="de">Plattform-Module</span></div>
+  <h2><span class="en">Everything you need to invest smarter</span><span class="de">Alles was du brauchst, um klüger zu investieren</span></h2>
+  <p class="section-sub"><span class="en">Four deeply integrated modules that cover the full investment workflow — from portfolio management to quantitative research.</span><span class="de">Vier tief integrierte Module, die den gesamten Investment-Workflow abdecken.</span></p>
+  <div class="overview-grid">
+    <a href="portfolio.html" class="ov-card">
+      <div class="ov-card-label">Portfolio</div>
+      <h3><span class="en">Portfolio Management</span><span class="de">Portfolio-Verwaltung</span></h3>
+      <p><span class="en">Full lifecycle portfolio management. Track positions, analyse performance, and manage risk across all your holdings.</span><span class="de">Vollständiges Portfolio-Management. Positionen verfolgen, Performance analysieren und Risiko managen.</span></p>
+      <div class="items">
+        <span class="item-tag">Depot</span><span class="item-tag">Analyse</span><span class="item-tag">Prognose</span><span class="item-tag">DCF</span><span class="item-tag">Stress-Test</span>
+      </div>
+      <span class="arrow"><span class="en">Explore Portfolio →</span><span class="de">Portfolio entdecken →</span></span>
+    </a>
+    <a href="research.html" class="ov-card">
+      <div class="ov-card-label">Research</div>
+      <h3>Research</h3>
+      <p><span class="en">Screen hundreds of stocks, manage your watchlist, track earnings events, and set intelligent price alerts.</span><span class="de">Hunderte Aktien screenen, Watchlist verwalten, Earnings-Termine verfolgen und Preisalarme setzen.</span></p>
+      <div class="items">
+        <span class="item-tag">Screener</span><span class="item-tag">Watchlist</span><span class="item-tag">Kalender</span><span class="item-tag">Alerts</span>
+      </div>
+      <span class="arrow"><span class="en">Explore Research →</span><span class="de">Research entdecken →</span></span>
+    </a>
+    <a href="quant-lab.html" class="ov-card">
+      <div class="ov-card-label">Quant Lab</div>
+      <h3>Quant Lab</h3>
+      <p><span class="en">Professional-grade quantitative tools: factor models, regime detection, pairs trading, ML signals, and portfolio construction.</span><span class="de">Professionelle quantitative Tools: Faktormodelle, Regime-Erkennung, Pairs Trading, ML-Signale und Portfolio-Konstruktion.</span></p>
+      <div class="items">
+        <span class="item-tag">Faktormodell</span><span class="item-tag">Regime</span><span class="item-tag">Pairs</span><span class="item-tag">ML</span><span class="item-tag">Backtest</span>
+      </div>
+      <span class="arrow"><span class="en">Explore Quant Lab →</span><span class="de">Quant Lab entdecken →</span></span>
+    </a>
+    <a href="terminal.html" class="ov-card">
+      <div class="ov-card-label">Terminal</div>
+      <h3>Terminal</h3>
+      <p><span class="en">A Bloomberg-style command terminal with real-time market data, macro panels, equity tools, and a full command library.</span><span class="de">Ein Bloomberg-ähnliches Terminal mit Echtzeit-Marktdaten, Makro-Panels, Equity-Tools und einer vollständigen Befehlsbibliothek.</span></p>
+      <div class="items">
+        <span class="item-tag">Commands</span><span class="item-tag">Live Data</span><span class="item-tag">Macro</span><span class="item-tag">FX</span>
+      </div>
+      <span class="arrow"><span class="en">Explore Terminal →</span><span class="de">Terminal entdecken →</span></span>
+    </a>
+  </div>
+</div>
 
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">Does the free trial really cost nothing? <span class="arrow">›</span></div>
-    <div class="faq-a">Yes. Your first month of Pro is completely free. We require a credit card to start your trial so renewal is seamless — you won't be charged until the trial ends.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">Can I cancel before the trial ends? <span class="arrow">›</span></div>
-    <div class="faq-a">Absolutely. Cancel any time during the trial and you won't be charged. Your Pro access continues until the trial period is over.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">What happens if I don't upgrade after the trial? <span class="arrow">›</span></div>
-    <div class="faq-a">Your account automatically downgrades to the free Starter plan. You keep full access to Dashboard, Depot, Analyse, Schnellanalyse, and Settings.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">Is the annual plan billed all at once? <span class="arrow">›</span></div>
-    <div class="faq-a">Yes — the annual plan (€96/year) is billed once upfront and saves you 20% compared to monthly billing.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">Are prices inclusive of VAT? <span class="arrow">›</span></div>
-    <div class="faq-a">Prices shown are exclusive of VAT. German customers will see 19% VAT added at checkout.</div>
+<div class="sep"></div>
+
+<!-- CTA -->
+<div class="section">
+  <div class="cta-banner">
+    <h2><span class="en">Ready to invest smarter?</span><span class="de">Bereit, klüger zu investieren?</span></h2>
+    <p><span class="en">QuantPro is built for investors who take their portfolio seriously. Start with the free plan — no credit card required.</span><span class="de">QuantPro wurde für Investoren gebaut, die ihr Portfolio ernst nehmen. Starte mit dem kostenlosen Plan — keine Kreditkarte erforderlich.</span></p>
+    <a href="https://www.quantpro.de/register" class="btn-cta" target="_blank"><span class="en">Create Free Account</span><span class="de">Kostenloses Konto erstellen</span></a>
   </div>
 </div>
 
 <footer class="footer">
-  <p style="margin-bottom:8px">
-    <a href="https://www.quantpro.info">quantpro.info</a> &nbsp;·&nbsp;
-    <a href="https://www.quantpro.de/login">Terminal</a> &nbsp;·&nbsp;
-    <a href="mailto:support@quantpro.de">Support</a>
-  </p>
-  <p>© 2026 QuantPro · All prices + VAT · <a href="#">Imprint</a> · <a href="#">Privacy</a></p>
+  <div class="footer-logo"><span class="bracket">[</span>QUANTPRO<span class="bracket">]</span></div>
+  <div class="footer-links">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+    <a href="https://quantpro.store" target="_blank"><span class="en">Pricing</span><span class="de">Preise</span></a>
+  </div>
+  <div class="footer-copy">© 2026 QuantPro</div>
 </footer>
 
 <script>
-// Theme
-const saved = localStorage.getItem('qp_store_theme') || 'dark';
-document.documentElement.setAttribute('data-theme', saved);
-document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀ Light' : '◑ Dark';
-
-function toggleTheme() {
-  const cur = document.documentElement.getAttribute('data-theme');
-  const next = cur === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('qp_store_theme', next);
-  document.getElementById('themeBtn').textContent = next === 'dark' ? '☀ Light' : '◑ Dark';
-}
-
-// Billing toggle
-let billing = 'monthly';
-function setBilling(type) {
-  billing = type;
-  document.getElementById('btnMonthly').classList.toggle('active', type === 'monthly');
-  document.getElementById('btnAnnual').classList.toggle('active', type === 'annual');
-  if (type === 'annual') {
-    document.getElementById('proPrice').textContent = '8';
-    document.getElementById('proPriceSub').innerHTML = '<span class="annual-note">€96 billed annually · save €24/year</span>';
-    document.getElementById('trialAfter').textContent = '€96/year (annual)';
-  } else {
-    document.getElementById('proPrice').textContent = '10';
-    document.getElementById('proPriceSub').innerHTML = '&nbsp;';
-    document.getElementById('trialAfter').textContent = '€10/month';
-  }
-}
-
-// Trial CTA — replace href with Stripe Checkout URL once configured
-function startTrial(e) {
-  e.preventDefault();
-  // STRIPE_MONTHLY_URL and STRIPE_ANNUAL_URL will be filled in after Stripe setup
-  const urls = {
-    monthly: 'https://buy.stripe.com/28EcN5dIF4QigWr05vfjG00',
-    annual:  'https://buy.stripe.com/bJeaEXfQN96y7lR8C1fjG01',
-  };
-  const url = urls[billing];
-  if (url.startsWith('STRIPE')) {
-    alert('Payment setup coming soon — check back shortly!');
-    return;
-  }
-  window.location.href = url;
-}
-
-// FAQ accordion
-function toggleFaq(el) {
-  el.parentElement.classList.toggle('open');
-}
+function setLang(l){document.body.classList.toggle('lang-de',l==='de');localStorage.setItem('qp-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}
+function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('qp-theme',t);}
+(function(){const l=localStorage.getItem('qp-lang')||'en';if(l==='de'){document.body.classList.add('lang-de');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}const t=localStorage.getItem('qp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
 </script>
 </body>
 </html>
