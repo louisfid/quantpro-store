@@ -4,35 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>QuantPro — Plans & Pricing</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:      #0a0a0a;
-  --bg2:     #111111;
-  --bg3:     #181818;
-  --card:    #141414;
-  --border:  #262626;
-  --green:   #00d26a;
-  --green2:  #00ff87;
-  --text:    #e8e8e8;
-  --text2:   #b0b0b0;
-  --dim:     #606060;
-  --muted:   #2a2a2a;
+  --bg:      #0D1117;
+  --bg2:     #161B22;
+  --bg3:     #21262D;
+  --card:    #161B22;
+  --border:  #21262D;
+  --green:   #3FB950;
+  --green2:  #56D364;
+  --text:    #E6EDF3;
+  --text2:   #8B949E;
+  --dim:     #484F58;
+  --muted:   #21262D;
   --shadow:  rgba(0,0,0,.6);
-  --pro-glow: rgba(0,210,106,.08);
+  --pro-glow: rgba(63,185,80,.08);
 }
 [data-theme="light"] {
-  --bg:      #f8f9fa;
-  --bg2:     #ffffff;
+  --bg:      #FFFFFF;
+  --bg2:     #F6F8FA;
   --bg3:     #f0f2f4;
-  --card:    #ffffff;
-  --border:  #e0e4e8;
-  --text:    #111111;
-  --text2:   #444444;
-  --dim:     #888888;
-  --muted:   #e8eaed;
+  --card:    #FFFFFF;
+  --border:  #D0D7DE;
+  --text:    #1F2328;
+  --text2:   #656D76;
+  --dim:     #6E7781;
+  --muted:   #F0F2F4;
   --shadow:  rgba(0,0,0,.12);
-  --pro-glow: rgba(0,210,106,.06);
+  --pro-glow: rgba(63,185,80,.06);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{font-size:14px;scroll-behavior:smooth}
@@ -41,8 +42,9 @@ a{color:inherit;text-decoration:none}
 
 /* NAV */
 .nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;backdrop-filter:blur(12px)}
-.nav-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;letter-spacing:.06em}
-.nav-logo .dot{width:8px;height:8px;background:var(--green);border-radius:50%}
+.nav-logo{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;letter-spacing:-.02em;text-decoration:none}
+.nav-logo .bracket{color:var(--green);font-size:1.1em}
+.nav-logo .logo-text{background:linear-gradient(135deg,var(--green),#56D364);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;align-items:center;gap:24px;font-size:13px;color:var(--text2)}
 .nav-links a:hover{color:var(--text);transition:color .15s}
 .nav-actions{display:flex;align-items:center;gap:12px}
@@ -70,12 +72,12 @@ a{color:inherit;text-decoration:none}
 
 .plan-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,box-shadow .2s}
 .plan-card.pro{border-color:var(--green);box-shadow:0 0 0 1px var(--green), 0 8px 40px var(--pro-glow)}
-.plan-card.pro .plan-header{background:linear-gradient(135deg,rgba(0,210,106,.08) 0%,transparent 60%)}
+.plan-card.pro .plan-header{background:linear-gradient(135deg,rgba(63,185,80,.08) 0%,transparent 60%)}
 
 .plan-header{padding:28px 28px 24px}
 .plan-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:12px}
 .plan-badge.free-badge{background:var(--muted);color:var(--dim)}
-.plan-badge.pro-badge{background:rgba(0,210,106,.15);color:var(--green)}
+.plan-badge.pro-badge{background:rgba(63,185,80,.15);color:var(--green)}
 .plan-name{font-size:22px;font-weight:700;margin-bottom:4px}
 .plan-desc{font-size:13px;color:var(--text2);margin-bottom:20px}
 .plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
@@ -89,7 +91,7 @@ a{color:inherit;text-decoration:none}
 .cta-free{background:var(--muted);color:var(--text);border:1px solid var(--border)}
 .cta-free:hover{border-color:var(--green);color:var(--green)}
 .cta-pro{background:var(--green);color:#000}
-.cta-pro:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,210,106,.3)}
+.cta-pro:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(63,185,80,.3)}
 .trial-note{text-align:center;font-size:11px;color:var(--dim);margin-top:10px}
 .trial-note span{color:var(--green)}
 
@@ -104,7 +106,7 @@ a{color:inherit;text-decoration:none}
 .feature-text{color:var(--text2);line-height:1.4}
 .feature-text.locked{color:var(--dim)}
 .feature-text .tag{font-size:10px;font-weight:600;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle}
-.tag-pro{background:rgba(0,210,106,.15);color:var(--green)}
+.tag-pro{background:rgba(63,185,80,.15);color:var(--green)}
 
 /* COMPARISON TABLE */
 .comparison{max-width:860px;margin:0 auto;padding:0 24px 80px}
@@ -121,7 +123,7 @@ a{color:inherit;text-decoration:none}
 .comp-cross{color:var(--muted);filter:brightness(2);font-size:16px}
 .comp-cat{padding:10px 20px 6px;background:var(--bg3);border-bottom:1px solid var(--border)}
 .comp-cat td{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:10px 20px 6px}
-.col-pro{background:rgba(0,210,106,.03)}
+.col-pro{background:rgba(63,185,80,.03)}
 
 /* FAQ */
 .faq{max-width:680px;margin:0 auto;padding:0 24px 80px}
@@ -149,7 +151,7 @@ a{color:inherit;text-decoration:none}
 
 <nav class="nav">
   <a href="https://www.quantpro.info" class="nav-logo">
-    <div class="dot"></div>QUANTPRO
+    <span class="bracket">[</span><span class="logo-text">QuantPro</span><span class="bracket">]</span>
   </a>
   <div class="nav-links">
     <a href="https://www.quantpro.info">Overview</a>
@@ -248,31 +250,31 @@ a{color:inherit;text-decoration:none}
       <div class="features-label">Everything in Free, plus</div>
       <div class="feature-row">
         <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text"><strong>Terminal</strong> — Live market data &amp; mnemonics</span>
+        <span class="feature-text"><strong>Terminal</strong> — 50+ live mnemonics &amp; market data</span>
       </div>
       <div class="feature-row">
         <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Forecast &amp; Monte Carlo simulation</span>
+        <span class="feature-text">Global Screener — 1,255+ stocks, 13 markets</span>
       </div>
       <div class="feature-row">
         <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Stock Screening &amp; Alerts</span>
+        <span class="feature-text">Quant Lab — ML Signals, Factor Analysis, Pairs Trading</span>
       </div>
       <div class="feature-row">
         <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">AI Analysis &amp; News Intelligence</span>
+        <span class="feature-text">AI Review, Investment Case &amp; Peer Comparison</span>
       </div>
       <div class="feature-row">
         <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">DCF Calculator &amp; Valuation</span>
+        <span class="feature-text">DCF Calculator, Options Advisor &amp; Sector Rotation</span>
       </div>
       <div class="feature-row">
         <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Investment Case, Peer Comparison</span>
+        <span class="feature-text">PDF Export, Alerts &amp; API Access</span>
       </div>
       <div class="feature-row">
         <svg class="icon icon-check" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="feature-text">Priority support &amp; early features</span>
+        <span class="feature-text">Priority support &amp; early access to new features</span>
       </div>
     </div>
   </div>
@@ -297,18 +299,32 @@ a{color:inherit;text-decoration:none}
       <tr><td>Analyse — Multi-factor portfolio analysis</td><td><span class="comp-check">✓</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
       <tr><td>Schnellanalyse — Instant single-stock analysis</td><td><span class="comp-check">✓</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
       <tr><td>Settings, dark/light mode</td><td><span class="comp-check">✓</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr class="comp-cat"><td colspan="3">Professional Tools</td></tr>
-      <tr><td>Terminal — 46 live mnemonics &amp; market data</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Forecast &amp; Monte Carlo simulation</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Stock Screening (60+ filters)</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Price Alerts &amp; Notifications</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr class="comp-cat"><td colspan="3">Terminal &amp; Market Data</td></tr>
+      <tr><td>Terminal — 50+ live mnemonics &amp; market data</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Global Screener — 1,255+ stocks, 13 markets</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Sector Rotation — 11 SPDR ETFs vs SPY</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Price Alerts &amp; Email Notifications</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
       <tr><td>News Intelligence &amp; Sentiment</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>AI Portfolio Analysis</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr class="comp-cat"><td colspan="3">Valuation &amp; Research</td></tr>
-      <tr><td>DCF Calculator</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Investment Case Builder</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Peer Comparison</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
-      <tr><td>Stress Testing</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Forecast &amp; Monte Carlo simulation</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr class="comp-cat"><td colspan="3">Research &amp; Valuation</td></tr>
+      <tr><td>DCF Calculator — auto-prefill from live data</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Investment Case Builder — thesis &amp; targets</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Peer Comparison — radar chart, 8 metrics</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>AI Review — GPT-powered research brief</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Options Advisor — covered calls &amp; CSPs</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr class="comp-cat"><td colspan="3">Quant Lab</td></tr>
+      <tr><td>ML Signals — buy/sell with confidence scores</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Factor Analysis — Fama-French 5-factor</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Regime Detection — Hidden Markov Model</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Pairs Trading — cointegration &amp; Z-score</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Portfolio Construction — mean-variance optimisation</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Efficient Frontier &amp; Kelly Criterion</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr class="comp-cat"><td colspan="3">Portfolio Advanced</td></tr>
+      <tr><td>ESG Scoring &amp; Overlap Analysis</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Drawdown &amp; Tracking Error analytics</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>PDF Report Export</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>Multi-language (DE / EN)</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
+      <tr><td>API Access (/api/v1)</td><td><span class="comp-cross">—</span></td><td class="col-pro"><span class="comp-check">✓</span></td></tr>
     </tbody>
   </table>
 </div>
@@ -345,7 +361,7 @@ a{color:inherit;text-decoration:none}
     <a href="https://www.quantpro.de/login">Terminal</a> &nbsp;·&nbsp;
     <a href="mailto:support@quantpro.de">Support</a>
   </p>
-  <p>© 2025 QuantPro · All prices + VAT · <a href="#">Imprint</a> · <a href="#">Privacy</a></p>
+  <p>© 2026 QuantPro · All prices + VAT · <a href="#">Imprint</a> · <a href="#">Privacy</a></p>
 </footer>
 
 <script>
