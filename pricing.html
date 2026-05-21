@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuantPro — Pricing</title>
+<meta name="description" content="Simple, transparent pricing. Start free, upgrade when you're ready.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:780px;margin:0 auto 64px}
+@media(max-width:640px){.pricing-grid{grid-template-columns:1fr}}
+.plan-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px 32px;position:relative;display:flex;flex-direction:column}
+.plan-card.featured{border-color:var(--green);box-shadow:0 0 0 1px rgba(63,185,80,.2),0 16px 48px rgba(63,185,80,.08)}
+.plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--green);color:#000;font-size:11px;font-weight:700;padding:3px 14px;border-radius:20px;letter-spacing:.06em;white-space:nowrap}
+.plan-name{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:12px}
+.plan-price{font-size:48px;font-weight:800;font-family:'JetBrains Mono',monospace;letter-spacing:-.03em;line-height:1;margin-bottom:4px}
+.plan-price span{font-size:18px;font-weight:500;color:var(--text2);vertical-align:super;margin-right:2px}
+.plan-period{font-size:12px;color:var(--dim);margin-bottom:24px}
+.plan-desc{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:28px;min-height:48px}
+.plan-features{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;margin-bottom:32px;flex:1}
+.plan-features li{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.plan-features li .chk{font-size:12px;color:var(--green);flex-shrink:0;margin-top:1px}
+.plan-features li .chk.no{color:var(--dim)}
+.plan-features li.dim-item{color:var(--dim)}
+.plan-sep{height:1px;background:var(--border);margin:16px 0}
+.plan-cta{display:block;text-align:center;padding:13px 24px;border-radius:8px;font-size:14px;font-weight:600;letter-spacing:.02em;transition:all .2s;text-decoration:none}
+.plan-cta.free{border:1px solid var(--border);color:var(--text2)}
+.plan-cta.free:hover{border-color:var(--text2);color:var(--text)}
+.plan-cta.pro{background:var(--green);color:#000}
+.plan-cta.pro:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(63,185,80,.3)}
+
+/* comparison table */
+.comp-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:64px}
+.comp-table th{text-align:left;padding:10px 16px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--border)}
+.comp-table th:not(:first-child){text-align:center;width:140px}
+.comp-table td{padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:middle}
+.comp-table td:not(:first-child){text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table .cat-row td{background:var(--card);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);padding:14px 16px 6px;border-bottom:none}
+.comp-check{color:var(--green);font-size:14px}
+.comp-dash{color:var(--dim)}
+.comp-table-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;max-width:780px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="bracket">[</span><span class="logo-text">QUANTPRO</span><span class="bracket">]</span></a>
+  <div class="nav-links">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-sm lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="btn-sm lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+    <button class="btn-sm" onclick="toggleTheme()"><span class="en">Theme</span><span class="de">Design</span></button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow"><span class="en">Pricing</span><span class="de">Preise</span></div>
+  <h1><span class="en">Simple, transparent<br><em>pricing</em></span><span class="de">Einfache, transparente<br><em>Preise</em></span></h1>
+  <p><span class="en">Start free — no credit card required. Upgrade to Pro when you're ready for institutional-grade tools.</span><span class="de">Kostenlos starten — keine Kreditkarte erforderlich. Upgrade auf Pro, wenn du bereit für institutionelle Tools bist.</span></p>
+</div>
+
+<!-- PLAN CARDS -->
+<div class="section" style="padding-top:0">
+  <div class="pricing-grid">
+
+    <!-- FREE -->
+    <div class="plan-card">
+      <div class="plan-name">Free</div>
+      <div class="plan-price"><span>€</span>0</div>
+      <div class="plan-period"><span class="en">forever</span><span class="de">für immer</span></div>
+      <div class="plan-desc"><span class="en">Everything you need to get started with portfolio tracking and basic analysis.</span><span class="de">Alles, was du für den Einstieg in Portfolio-Tracking und Basisanalyse brauchst.</span></div>
+      <ul class="plan-features">
+        <li><span class="chk">✓</span> <span class="en">Portfolio management (up to 10 positions)</span><span class="de">Portfolio-Verwaltung (bis zu 10 Positionen)</span></li>
+        <li><span class="chk">✓</span> <span class="en">Dashboard with live prices</span><span class="de">Dashboard mit Live-Kursen</span></li>
+        <li><span class="chk">✓</span> <span class="en">Basic P&amp;L tracking</span><span class="de">Grundlegendes P&amp;L-Tracking</span></li>
+        <li><span class="chk">✓</span> <span class="en">Watchlist</span><span class="de">Watchlist</span></li>
+        <li><span class="chk">✓</span> <span class="en">Market news feed</span><span class="de">Marktnachrichten-Feed</span></li>
+        <div class="plan-sep"></div>
+        <li class="dim-item"><span class="chk no">—</span> Terminal</li>
+        <li class="dim-item"><span class="chk no">—</span> <span class="en">Screener</span><span class="de">Aktien-Screener</span></li>
+        <li class="dim-item"><span class="chk no">—</span> <span class="en">Forecast &amp; Monte Carlo</span><span class="de">Prognose &amp; Monte Carlo</span></li>
+        <li class="dim-item"><span class="chk no">—</span> <span class="en">AI Analysis</span><span class="de">KI-Analyse</span></li>
+      </ul>
+      <a href="https://www.quantpro.de/register" target="_blank" class="plan-cta free"><span class="en">Get Started Free</span><span class="de">Kostenlos starten</span></a>
+    </div>
+
+    <!-- PRO -->
+    <div class="plan-card featured">
+      <div class="plan-badge">MOST POPULAR</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price"><span>€</span>9<span style="font-size:20px;font-weight:500;color:var(--text2);vertical-align:baseline">.99</span></div>
+      <div class="plan-period"><span class="en">per month</span><span class="de">pro Monat</span></div>
+      <div class="plan-desc"><span class="en">The full platform. Every tool, every feature — built for serious investors.</span><span class="de">Die komplette Plattform. Jedes Tool, jedes Feature — für ernsthafte Investoren.</span></div>
+      <ul class="plan-features">
+        <li><span class="chk">✓</span> <span class="en">Everything in Free</span><span class="de">Alles aus Free</span></li>
+        <li><span class="chk">✓</span> <span class="en">Unlimited positions</span><span class="de">Unbegrenzte Positionen</span></li>
+        <li><span class="chk">✓</span> <span class="en">Terminal (46+ live mnemonics)</span><span class="de">Terminal (46+ Live-Mnemonics)</span></li>
+        <li><span class="chk">✓</span> <span class="en">Stock Screener (100+ filters)</span><span class="de">Aktien-Screener (100+ Filter)</span></li>
+        <li><span class="chk">✓</span> <span class="en">Forecast &amp; Monte Carlo</span><span class="de">Prognose &amp; Monte Carlo</span></li>
+        <li><span class="chk">✓</span> <span class="en">AI Portfolio Analysis</span><span class="de">KI-Portfolio-Analyse</span></li>
+        <li><span class="chk">✓</span> <span class="en">Price Alerts &amp; Notifications</span><span class="de">Kursalerts &amp; Benachrichtigungen</span></li>
+        <li><span class="chk">✓</span> <span class="en">DCF Calculator</span><span class="de">DCF-Rechner</span></li>
+        <li><span class="chk">✓</span> <span class="en">Stress Test &amp; Risk Report</span><span class="de">Stress-Test &amp; Risikobericht</span></li>
+        <li><span class="chk">✓</span> <span class="en">Full Quant Lab suite</span><span class="de">Vollständiges Quant-Lab</span></li>
+        <li><span class="chk">✓</span> <span class="en">PDF &amp; CSV Export</span><span class="de">PDF &amp; CSV Export</span></li>
+      </ul>
+      <a href="https://www.quantpro.de/register" target="_blank" class="plan-cta pro"><span class="en">Start Pro Trial</span><span class="de">Pro-Trial starten</span></a>
+    </div>
+
+  </div>
+
+  <!-- FEATURE COMPARISON TABLE -->
+  <div class="section-eyebrow" style="text-align:center;margin-bottom:16px"><span class="en">Full comparison</span><span class="de">Vollständiger Vergleich</span></div>
+  <div class="comp-table-wrap">
+    <table class="comp-table">
+      <tr>
+        <th><span class="en">Feature</span><span class="de">Funktion</span></th>
+        <th>Free</th>
+        <th>Pro</th>
+      </tr>
+
+      <tr class="cat-row"><td colspan="3">Portfolio</td></tr>
+      <tr><td><span class="en">Portfolio positions</span><span class="de">Portfolio-Positionen</span></td><td><span class="comp-dash" style="font-size:11px;font-family:inherit">10 max</span></td><td><span class="comp-check">✓</span> <span style="font-size:11px;font-family:inherit;color:var(--dim)"><span class="en">unlimited</span><span class="de">unbegrenzt</span></span></td></tr>
+      <tr><td><span class="en">Live P&amp;L tracking</span><span class="de">Live P&amp;L-Tracking</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Broker Import (CSV)</span><span class="de">Broker-Import (CSV)</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Portfolio Analysis (24 factors)</span><span class="de">Portfolio-Analyse (24 Faktoren)</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Stress Test</span><span class="de">Stress-Test</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Risk Report (VaR · CVaR)</span><span class="de">Risikobericht (VaR · CVaR)</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Forecast &amp; Monte Carlo</span><span class="de">Prognose &amp; Monte Carlo</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td>DCF Calculator</td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td>PDF &amp; CSV Export</td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">Research</td></tr>
+      <tr><td>Watchlist</td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Earnings Calendar</span><span class="de">Earnings-Kalender</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Stock Screener (100+ filters)</span><span class="de">Aktien-Screener (100+ Filter)</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Price Alerts</span><span class="de">Kursalerts</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Push Notifications</span><span class="de">Push-Benachrichtigungen</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">Terminal</td></tr>
+      <tr><td><span class="en">Bloomberg-style Terminal</span><span class="de">Bloomberg-ähnliches Terminal</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">46+ Live Mnemonics</span><span class="de">46+ Live-Mnemonics</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">FX &amp; Macro Panels</span><span class="de">FX &amp; Makro-Panels</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">Quant Lab &amp; AI</td></tr>
+      <tr><td><span class="en">AI Portfolio Analysis</span><span class="de">KI-Portfolio-Analyse</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Factor Model (β · α · Sharpe)</span><span class="de">Faktormodell (β · α · Sharpe)</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">ML Signals &amp; Regime Detection</span><span class="de">ML-Signale &amp; Regime-Erkennung</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Options Advisor</span><span class="de">Optionen-Berater</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td>ESG</td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Backtest</span><span class="de">Backtest</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+      <tr><td><span class="en">Investment Cases &amp; Peer Compare</span><span class="de">Investment Cases &amp; Peer-Vergleich</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<div class="section">
+  <div class="cta-banner">
+    <h2><span class="en">Ready to upgrade?</span><span class="de">Bereit für das Upgrade?</span></h2>
+    <p><span class="en">Join investors who use QuantPro Pro for institutional-grade analysis. Start with a free trial — no credit card required.</span><span class="de">Werde Teil der Investoren, die QuantPro Pro für institutionelle Analysen nutzen. Starte mit einer kostenlosen Testphase.</span></p>
+    <a href="https://www.quantpro.de/register" class="btn-cta" target="_blank"><span class="en">Start Free Trial</span><span class="de">Kostenlose Testphase starten</span></a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo"><span class="bracket">[</span>QUANTPRO<span class="bracket">]</span></div>
+  <div class="footer-links">
+    <a href="index.html"><span class="en">Overview</span><span class="de">Übersicht</span></a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="research.html">Research</a>
+    <a href="quant-lab.html">Quant Lab</a>
+    <a href="terminal.html">Terminal</a>
+    <a href="https://www.quantpro.de" target="_blank">App</a>
+  </div>
+  <div class="footer-copy">© 2026 QuantPro</div>
+</footer>
+
+<script>
+function setLang(l){document.body.classList.toggle('lang-de',l==='de');localStorage.setItem('qp-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}
+function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('qp-theme',t);}
+(function(){const l=localStorage.getItem('qp-lang')||'en';if(l==='de'){document.body.classList.add('lang-de');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));}const t=localStorage.getItem('qp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+</body>
+</html>
